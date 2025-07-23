@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="darkreader-lock">
+    <meta name="color-scheme" content="light dark">
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>emailjs.init('user_yourUserIdHere');</script> <!-- Je vous expliquerai comment obtenir cet ID -->
+
+    <title>Portfolio Interactif Optimisé</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {},
+        },
+        plugins: [
+          function ({ addUtilities }) {
+            addUtilities({
+              '.scrollbar-thin': {
+                'scrollbar-width': 'thin',
+                '&::-webkit-scrollbar': {
+                  height: '6px',
+                },
+                '&::-webkit-scrollbar-thumb': {
+                  backgroundColor: '#7c3aed',
+                  borderRadius: '4px',
+                },
+                '&::-webkit-scrollbar-track': {
+                  backgroundColor: 'transparent',
+                }
+              },
+              '.will-change-transform': {
+                'will-change': 'transform',
+                'backface-visibility': 'hidden'
+              }
+            });
+          }
+        ]
+      }
+    </script>
+    <style>
+      body {
+        min-height: 100vh;
+        color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      #bgCanvas {
+        filter: none !important;
+        -webkit-filter: none !important;
+      }
+      #bgCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        display: block;
+      }
+      #sourceVideo {
+        display: none;
+      }
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+      .lightbox img {
+        max-width: 90vw;
+        max-height: 90vh;
+        border-radius: 0.5rem;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 2rem;
+        color: #ffffff;
+        cursor: pointer;
+      }
+      
+      /* Carrousel optimisé */
+      .youtube-carousel {
+        position: relative;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 2rem 0;
+        contain: strict;
+      }
+      .carousel-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.5rem;
+      }
+      .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease;
+        will-change: transform;
+      }
+      .carousel-item {
+        min-width: 100%;
+        padding: 0 1rem;
+        box-sizing: border-box;
+      }
+      .carousel-item iframe {
+        width: 100%;
+        height: 500px;
+        border-radius: 0.5rem;
+        border: none;
+        loading: lazy;
+      }
+      @media (max-width: 768px) {
+        .carousel-item iframe {
+          height: 300px;
+        }
+      }
+      .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        z-index: 10;
+      }
+      .carousel-btn {
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        margin: 0 1rem;
+      }
+      .carousel-btn:hover {
+        background: rgba(124, 58, 237, 0.9);
+      }
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+      }
+      .carousel-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #4B5563;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+      .carousel-dot.active {
+        background: #7C3AED;
+      }
+    </style>
+  </head>
+  <body class="font-sans relative min-h-screen">
+    <!-- Fond vidéo optimisé -->
+    <video id="sourceVideo" preload="auto" playsinline muted loop class="hidden">
+      <source src="video/BackDrop.webm" type="video/webm">
+      <source src="video/BackDrop.mp4" type="video/mp4">
+    </video>
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Menu Burger -->
+    <header class="bg-black text-white p-4 flex items-center sticky top-0 z-50 justify-between md:justify-start">
+      <button id="burger-button" class="md:hidden focus:outline-none mr-4">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <div class="text-xl font-bold">Mon Portfolio</div>
+    </header>
+    
+    <nav id="burger-menu" class="backdrop-blur-md fixed inset-0 bg-black bg-opacity-95 text-white p-10 space-y-4 transform -translate-x-full transition-transform duration-300 z-50 md:relative md:translate-x-0 md:flex md:items-center md:space-x-6 md:space-y-0 md:bg-transparent md:p-0">
+      <button id="close-burger" class="md:hidden absolute top-4 right-4 text-white text-3xl">&times;</button>
+      <a href="#home" class="block hover:text-blue-400">Accueil</a>
+      <a href="#projects" class="block hover:text-blue-400">Projets</a>
+      <a href="#contact" class="block hover:text-blue-400">Contact</a>
+    </nav>
+    
+    <!-- Bande vidéo d'accueil optimisée -->
+    <section class="w-full h-[600px] relative my-6 mx-auto max-w-6xl rounded-3xl overflow-hidden" style="padding-bottom: 2.25%;"> <!-- 16:9 = 9/16 = 56.25% -->
+      <video autoplay muted loop playsinline preload="auto" class="w-full h-full object-cover brightness-75">
+        <source src="video/intro.webm" type="video/webm">
+        <source src="video/intro.mp4" type="video/mp4">
+        Ton navigateur ne supporte pas la vidéo HTML5.
+      </video>
+    </section>
+
+    <section id="home" class="max-w-6xl mx-auto px-6 py-16 text-center bg-black/60 backdrop-blur-sm rounded-xl fade-in">
+      <h1 class="text-5xl font-bold mb-6">Bienvenue dans mon univers interactif</h1>
+      <p class="text-lg text-gray-300 mb-8">Exploration techno-artistique à travers installations, jeux, design et performances audiovisuelles.</p>
+      <a href="#projects" class="inline-block bg-purple-700 hover:bg-purple-600 transition-colors px-6 py-3 rounded text-white font-semibold">Voir les projets</a>
+    </section>
+
+    <!-- Carrousel YouTube optimisé -->
+    <div class="max-w-6xl mx-auto p-6 bg-black/60 backdrop-blur-sm rounded-xl fade-in mb-12 mt-12">
+      <h1 class="text-4xl font-bold mb-6">Vidéos YouTube</h1>
+      
+      <div class="youtube-carousel h-[600px]">
+        <div class="carousel-container">
+          <div class="carousel-track will-change-transform">
+            <!-- Vidéo 1 -->
+            <div class="carousel-item">
+              <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <!-- Vidéo 2 -->
+            <div class="carousel-item">
+              <iframe src="https://www.youtube.com/embed/AUT5r7w5QIQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <!-- Vidéo 3 -->
+            <div class="carousel-item">
+              <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          
+          <div class="carousel-nav">
+            <button class="carousel-btn prev-btn">❮</button>
+            <button class="carousel-btn next-btn">❯</button>
+          </div>
+        </div>
+        
+        <div class="carousel-dots">
+          <div class="carousel-dot active" data-index="0"></div>
+          <div class="carousel-dot" data-index="1"></div>
+          <div class="carousel-dot" data-index="2"></div>
+        </div>
+      </div>
+    </div>
+
+<!-- Section Contact -->
+<section id="contact" class="max-w-6xl mx-auto px-6 py-12 fade-in bg-black/60 backdrop-blur-sm rounded-xl">
+  <h2 class="text-3xl font-semibold mb-4">Me contacter</h2>
+  <p class="mb-6 text-gray-400"><a href="mailto:crazy.lion.digital.arts@gmail.com" class="text-blue-400 underline"></a> Écris moi pour parler de ton projet! :</p>
+  
+  <form id="contact-form" class="grid gap-4 md:grid-cols-2">
+    <input type="text" name="from_name" placeholder="Ton nom" required class="bg-gray-800 p-3 rounded text-white">
+    <input type="email" name="reply_to" placeholder="Ton e-mail" required class="bg-gray-800 p-3 rounded text-white">
+    <input type="text" name="company" placeholder="Nom de la compagnie (optionnel)" class="bg-gray-800 p-3 rounded text-white md:col-span-2">
+    <input type="text" name="project" placeholder="Nom du projet" required class="bg-gray-800 p-3 rounded text-white md:col-span-2">
+    
+    <select name="type" required class="bg-gray-800 p-3 rounded text-white md:col-span-2">
+      <option value="" disabled selected>Type de projet</option>
+      <option value="Installation interactive">🖥️Installation interactive</option>
+      <option value="Jeu">🎮Jeu</option>
+      <option value="Événement">🎪Événement</option>
+      <option value="Prototype / recherche">🔬Prototype / recherche</option>
+      <option value="Autre">💡Autre</option>
+    </select>
+    
+    <textarea name="message" placeholder="Ton message" required class="md:col-span-2 bg-gray-800 p-3 rounded text-white h-32"></textarea>
+    
+    <button type="submit" class="md:col-span-2 bg-blue-700 hover:bg-blue-600 transition-colors p-3 rounded text-white">
+      Envoyer
+    </button>
+    
+    <div id="form-message" class="md:col-span-2 hidden p-3 rounded text-center"></div>
+  </form>
+</section>
+
+    <div id="lightbox" class="lightbox hidden">
+      <span id="lightbox-close" class="lightbox-close">&times;</span>
+      <img id="lightbox-img" src="" alt="Zoom image" loading="lazy" />
+    </div>
+
+    <script>
+      // Variables globales pour gestion mémoire
+      let resources = {
+        intervals: [],
+        observers: [],
+        listeners: []
+      };
+
+      // Fonction de nettoyage
+      function cleanupResources() {
+        resources.intervals.forEach(clearInterval);
+        resources.observers.forEach(obs => obs.disconnect());
+        resources.listeners.forEach(({element, type, handler}) => {
+          element.removeEventListener(type, handler);
+        });
+      }
+
+      // Initialisation optimisée
+      document.addEventListener('DOMContentLoaded', () => {
+        // Gestion du background vidéo
+        initBackground();
+        // Initialisation des composants
+        initComponents();
+        // Gestion des événements
+        setupEventListeners();
+      });
+
+      // Background vidéo optimisé
+      function initBackground() {
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d', { willReadFrequently: false });
+        const video = document.getElementById('sourceVideo');
+        
+        let lastUpdate = 0;
+        let isDrawing = false;
+        
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        
+        function drawTiles(timestamp) {
+          if (!isDrawing && timestamp - lastUpdate > 32) { // Limite à ~30fps
+            isDrawing = true;
+            lastUpdate = timestamp;
+            
+            if (video.readyState >= 2) {
+              const tileSize = Math.min(window.innerWidth / 4, 256);
+              const cols = Math.ceil(canvas.width / tileSize);
+              const rows = Math.ceil(canvas.height / tileSize);
+              
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              
+              for (let y = 0; y < rows; y++) {
+                for (let x = 0; x < cols; x++) {
+                  ctx.drawImage(video, x * tileSize, y * tileSize, tileSize, tileSize);
+                }
+              }
+            }
+            isDrawing = false;
+          }
+          requestAnimationFrame(drawTiles);
+        }
+        
+        video.addEventListener('loadeddata', () => {
+          resizeCanvas();
+          video.play().catch(e => console.log("Autoplay blocked:", e));
+          requestAnimationFrame(drawTiles);
+        });
+        
+        window.addEventListener('resize', () => {
+          resizeCanvas();
+          requestAnimationFrame(drawTiles);
+        });
+        
+        // Pause quand l'onglet est inactif
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            video.pause();
+          } else {
+            video.play().catch(e => console.log("Playback error:", e));
+          }
+        });
+      }
+
+      // Initialisation des composants
+      function initComponents() {
+        // Carrousel YouTube optimisé
+        initCarousel();
+        
+        // Lightbox
+        initLightbox();
+        
+        // Menu burger
+        initBurgerMenu();
+        
+        // Animations d'apparition
+        initAnimations();
+      }
+
+      // Carrousel YouTube
+      function initCarousel() {
+        const track = document.querySelector('.carousel-track');
+        const items = document.querySelectorAll('.carousel-item');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        
+        let currentIndex = 0;
+        const itemCount = items.length;
+        let autoScroll;
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        function updateCarousel() {
+          track.style.transform = `translateX(-${currentIndex * 100}%)`;
+          
+          dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+          });
+        }
+        
+        function startAutoScroll() {
+          autoScroll = setInterval(() => {
+            currentIndex = (currentIndex + 1) % itemCount;
+            updateCarousel();
+          }, 8000); // 8 secondes
+          resources.intervals.push(autoScroll);
+        }
+        
+        // Navigation
+        function goPrev() {
+          currentIndex = (currentIndex - 1 + itemCount) % itemCount;
+          updateCarousel();
+          resetAutoScroll();
+        }
+        
+        function goNext() {
+          currentIndex = (currentIndex + 1) % itemCount;
+          updateCarousel();
+          resetAutoScroll();
+        }
+        
+        function resetAutoScroll() {
+          clearInterval(autoScroll);
+          startAutoScroll();
+        }
+        
+        // Événements
+        function addCarouselListeners() {
+          prevBtn.addEventListener('click', goPrev);
+          nextBtn.addEventListener('click', goNext);
+          
+          dots.forEach(dot => {
+            const handler = () => {
+              currentIndex = parseInt(dot.dataset.index);
+              updateCarousel();
+              resetAutoScroll();
+            };
+            dot.addEventListener('click', handler);
+            resources.listeners.push({element: dot, type: 'click', handler});
+          });
+          
+          // Swipe pour mobile
+          track.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+          }, {passive: true});
+          
+          const swipeHandler = (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+          };
+          
+          track.addEventListener('touchend', swipeHandler, {passive: true});
+          resources.listeners.push({element: track, type: 'touchend', handler: swipeHandler});
+          
+          // Pause au survol
+          track.addEventListener('mouseenter', () => clearInterval(autoScroll));
+          track.addEventListener('mouseleave', startAutoScroll);
+        }
+        
+        function handleSwipe() {
+          const threshold = 50;
+          
+          if (touchEndX < touchStartX - threshold) {
+            goNext();
+          } else if (touchEndX > touchStartX + threshold) {
+            goPrev();
+          }
+        }
+        
+        // Initialisation
+        updateCarousel();
+        startAutoScroll();
+        addCarouselListeners();
+      }
+
+      // Lightbox optimisée
+      function initLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.getElementById('lightbox-close');
+        
+        function openLightbox(e) {
+          e.preventDefault();
+          const imgSrc = e.target.closest('img').src.replace('/300/200', '/800/600');
+          lightbox.classList.remove('hidden');
+          lightboxImg.src = imgSrc;
+        }
+        
+        function closeLightbox() {
+          lightbox.classList.add('hidden');
+          lightboxImg.src = '';
+        }
+        
+        // Écouteurs d'événements
+        document.querySelectorAll('img[data-lightbox]').forEach(img => {
+          const handler = (e) => openLightbox(e);
+          img.addEventListener('click', handler);
+          resources.listeners.push({element: img, type: 'click', handler});
+        });
+        
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) closeLightbox();
+        });
+      }
+
+      // Menu Burger
+      function initBurgerMenu() {
+        const burgerBtn = document.getElementById('burger-button');
+        const burgerMenu = document.getElementById('burger-menu');
+        const closeBurger = document.getElementById('close-burger');
+        
+        if (!burgerBtn || !burgerMenu) return;
+        
+        function toggleMenu(open) {
+          burgerMenu.classList.toggle('-translate-x-full', !open);
+          burgerMenu.classList.toggle('translate-x-0', open);
+        }
+        
+        // Écouteurs
+        burgerBtn.addEventListener('click', () => toggleMenu(true));
+        closeBurger.addEventListener('click', () => toggleMenu(false));
+        
+        // Fermeture au clic sur lien
+        burgerMenu.querySelectorAll('a').forEach(link => {
+          const handler = () => {
+            if (window.innerWidth < 768) toggleMenu(false);
+          };
+          link.addEventListener('click', handler);
+          resources.listeners.push({element: link, type: 'click', handler});
+        });
+      }
+
+      // Animations
+      function initAnimations() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+          observer.observe(el);
+          resources.observers.push(observer);
+        });
+      }
+
+      // Gestion des événements globaux
+      function setupEventListeners() {
+        // Nettoyage avant déchargement
+        window.addEventListener('beforeunload', cleanupResources);
+        
+        // Gestion mémoire
+        if ('performance' in window) {
+          setInterval(() => {
+            console.debug(
+              'Memory usage:',
+              performance.memory ? 
+                `${Math.round(performance.memory.usedJSHeapSize / 1048576)}MB` : 
+                'Non disponible'
+            );
+          }, 60000);
+        }
+      }
+    </script>
+
+<script>
+  emailjs.init('7_SvlQCn95E1KlTrv');
+
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const messageDiv = document.getElementById('form-message');
+    
+    // Reset et préparation UI
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi...';
+    messageDiv.classList.add('hidden');
+    messageDiv.textContent = '';
+
+    // Timeout de sécurité (8 secondes max)
+    const timeoutId = setTimeout(() => {
+      showError("Délai d'attente dépassé");
+    }, 8000);
+
+    try {
+      const emojiMap = {
+        "Installation interactive": "🖥️",
+        "Jeu": "🎮",
+        "Événement": "🎪", 
+        "Prototype / recherche": "🔬",
+        "Autre": "💡"
+      };
+
+      const response = await emailjs.send('service_qhgsx5h', 'template_4a2t8nh', {
+        subject: `[${form.type.value}]${form.company.value ? ' '+form.company.value : ''} - ${form.project.value}`,
+        from_name: form.from_name.value,
+        reply_to: form.reply_to.value,
+        company: form.company.value || 'Non spécifié',
+        type: form.type.value,
+        type_emoji: emojiMap[form.type.value] || "✉️",
+        project: form.project.value,
+        message: form.message.value
+      });
+
+      clearTimeout(timeoutId);
+      
+      if (response.status === 200) {
+        showSuccess();
+        form.reset();
+      } else {
+        showError("Erreur inattendue");
+      }
+
+    } catch (error) {
+      clearTimeout(timeoutId);
+      showError(error.text || "Erreur réseau");
+    }
+
+    function showSuccess() {
+      messageDiv.textContent = '✓ Message envoyé !';
+      messageDiv.className = 'md:col-span-2 p-3 bg-green-600 text-white rounded text-center';
+      submitBtn.textContent = 'Envoyé !';
+      setTimeout(() => {
+        submitBtn.textContent = 'Envoyer';
+        submitBtn.disabled = false;
+      }, 2000);
+    }
+
+    function showError(msg) {
+      messageDiv.textContent = '✗ ' + msg;
+      messageDiv.className = 'md:col-span-2 p-3 bg-red-600 text-white rounded text-center';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Réessayer';
+    }
+  });
+</script>
+
+  </body>
+</html>
