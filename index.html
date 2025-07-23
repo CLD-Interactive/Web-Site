@@ -190,15 +190,25 @@
     <canvas id="bgCanvas"></canvas>
 
     <!-- Menu Burger -->
-    <header class="bg-black text-white p-4 flex items-center sticky top-0 z-50 justify-between md:justify-start">
-      <button id="burger-button" class="md:hidden focus:outline-none mr-4">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-      <div class="text-xl font-bold">Mon Portfolio</div>
-    </header>
-    
+<header class="bg-black text-white p-4 flex items-center sticky top-0 z-50 justify-between md:justify-start">
+  <button id="burger-button" class="md:hidden focus:outline-none mr-4">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+  
+  <!-- Ajoutez cette div pour le logo + titre -->
+  <div class="flex items-center space-x-3">
+    <img 
+      src="pictures/logo.png" 
+      alt="Logo"
+      class="w-10 h-10 rounded-full object-cover border-2 border-purple-500"
+    >
+    <div class="text-xl font-bold">Mon Portfolio</div>
+  </div>
+</header>
+
+
     <nav id="burger-menu" class="backdrop-blur-md fixed inset-0 bg-black bg-opacity-95 text-white p-10 space-y-4 transform -translate-x-full transition-transform duration-300 z-50 md:relative md:translate-x-0 md:flex md:items-center md:space-x-6 md:space-y-0 md:bg-transparent md:p-0">
       <button id="close-burger" class="md:hidden absolute top-4 right-4 text-white text-3xl">&times;</button>
       <a href="#home" class="block hover:text-blue-400">Accueil</a>
@@ -206,6 +216,19 @@
       <a href="#contact" class="block hover:text-blue-400">Contact</a>
     </nav>
     
+
+
+    <!-- Nouvelle section Logo -->
+    <section class="max-w-6xl mx-auto px-6 py-8 text-center fade-in">
+      <img 
+        src="pictures/logo.png" 
+        alt="Logo Principal"
+        class="mx-auto w-[600px] h-[300px] md:w-[1200px] md:h-[500px] rounded-[20px] object-cover border-4 border-purple-500/80 shadow-lg hover:scale-105 transition-transform duration-300"
+      >
+    </section>
+
+
+
     <!-- Bande vidéo d'accueil optimisée -->
     <section class="w-full h-[600px] relative my-6 mx-auto max-w-6xl rounded-3xl overflow-hidden" style="padding-bottom: 2.25%;"> <!-- 16:9 = 9/16 = 56.25% -->
       <video autoplay muted loop playsinline preload="auto" class="w-full h-full object-cover brightness-75">
