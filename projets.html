@@ -6,7 +6,14 @@
   <meta name="darkreader-lock">
   <meta name="color-scheme" content="light dark">
   <title>Projets | Portfolio Interactif</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="pictures/tab icon.png" type="image/x-icon">
+  <link rel="icon" type="image/png" href="pictures/tab icon.png" sizes="32x32">
+  
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <style>
     body {
       min-height: 100vh;
@@ -14,11 +21,10 @@
       margin: 0;
       padding: 0;
       overflow-x: hidden;
+      padding-top: 72px !important;
+      background-color: #000;
     }
-    #bgCanvas {
-      filter: none !important;
-      -webkit-filter: none !important;
-    }
+    
     #bgCanvas {
       position: fixed;
       top: 0;
@@ -27,10 +33,62 @@
       height: 100vh;
       z-index: -1;
       display: block;
+      filter: none !important;
     }
-    #sourceVideo {
-      display: none;
+    
+    /* Menu styles from services page */
+    header {
+      height: 72px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
+    
+    .nav-button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      border: 2px solid;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      color: white;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    
+    .button-frame {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border: 2px solid transparent;
+      border-radius: 0.5rem;
+      pointer-events: none;
+      transition: all 0.4s ease;
+    }
+    
+    .nav-button:hover .button-frame {
+      border-color: rgba(124, 58, 237, 0.8);
+      animation: pulseFrame 1.5s infinite;
+    }
+    
+    @keyframes pulseFrame {
+      0% { border-color: rgba(124, 58, 237, 0.4); }
+      50% { border-color: rgba(124, 58, 237, 0.9); }
+      100% { border-color: rgba(124, 58, 237, 0.4); }
+    }
+    
+    /* Burger menu styles */
+    #burger-menu {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    #burger-menu.open {
+      transform: translateX(0);
+    }
+    
+    /* Projects page specific styles */
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -77,21 +135,62 @@
   </style>
 </head>
 <body class="font-sans relative min-h-screen">
-  <!-- Add the same video background elements as index.html -->
+  <!-- Video background elements -->
   <video id="sourceVideo" preload="auto" playsinline muted loop class="hidden">
     <source src="video/BackDrop_projet.webm" type="video/webm">
     <source src="video/BackDrop_projet.mp4" type="video/mp4">
   </video>
   <canvas id="bgCanvas"></canvas>
 
-  <header class="p-4 text-center bg-purple-900/80 backdrop-blur-sm font-bold text-2xl sticky top-0 z-50">
-    <nav class="flex justify-between items-center max-w-6xl mx-auto">
-      <a href="index.html" class="text-white text-lg hover:underline">Accueil</a>
-      <span>Projets</span>
-      <div></div>
+  <!-- Barre de navigation from services page -->
+  <header class="bg-black text-white p-4 fixed w-full top-0 z-50 flex justify-between items-center">
+     <div class="flex items-center space-x-3">
+        <img src="pictures/logo side 02.png" alt="Logo" class="w-40 h-11 rounded-md object-cover border-2 border-purple-500">
+        <div class="text-xl font-bold"></div>
+      </div>
+
+    <button id="burger-button" class="md:hidden focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+    <nav class="hidden md:flex items-center space-x-4">
+      <a href="index.html" class="nav-button border-purple-500 hover:bg-purple-500/10">
+        <span class="button-frame"></span>
+        Accueil
+      </a>
+      <a href="projets.html" class="nav-button bg-purple-600 border-purple-600 hover:bg-purple-700">
+        <span class="button-frame"></span>
+        Projets
+      </a>
+      <a href="services.html" class="nav-button border-purple-500 hover:bg-purple-500/10">
+        <span class="button-frame"></span>
+        Services
+      </a>
+      <a href="index.html#contact" class="nav-button bg-amber-600 border-amber-600 hover:bg-amber-700">
+        Contact
+      </a>
     </nav>
   </header>
-  
+
+  <!-- Menu Burger mobile from services page -->
+  <nav id="burger-menu" class="fixed inset-0 bg-black bg-opacity-95 backdrop-blur-md text-white p-10 space-y-4 z-50 md:hidden flex flex-col justify-center transform -translate-x-full transition-transform">
+    <button id="close-burger" class="absolute top-4 right-4 text-white text-3xl">&times;</button>
+    <a href="index.html" class="nav-button border-purple-500 hover:bg-purple-500/10 text-center">
+      Accueil
+    </a>
+    <a href="projets.html" class="nav-button bg-purple-600 border-purple-600 hover:bg-purple-700 text-center">
+      Projets
+    </a>
+    <a href="services.html" class="nav-button border-purple-500 hover:bg-purple-500/10 text-center">
+      Services
+    </a>
+    <a href="index.html#contact" class="nav-button bg-amber-600 border-amber-600 hover:bg-amber-700">
+      Contact
+    </a>
+  </nav>
+
   <main class="max-w-6xl mx-auto px-4 py-8">
     <div class="flex flex-wrap gap-2 mb-6">
       <button class="tag-button bg-purple-800 px-3 py-1 rounded" data-tag="all">Tous</button>
@@ -106,9 +205,40 @@
     </div>
   </main>
 
-  <!-- Add the background initialization script -->
   <script>
-    // Background video initialization (same as index.html)
+    // Variables globales pour gestion mémoire
+    let resources = {
+      intervals: [],
+      observers: [],
+      listeners: []
+    };
+
+    // Fonction de nettoyage
+    function cleanupResources() {
+      resources.intervals.forEach(clearInterval);
+      resources.observers.forEach(obs => obs.disconnect());
+      resources.listeners.forEach(({element, type, handler}) => {
+        element.removeEventListener(type, handler);
+      });
+    }
+
+    // Initialisation optimisée
+    document.addEventListener('DOMContentLoaded', () => {
+      // Gestion du background vidéo
+      initBackground();
+      // Menu Burger
+      initBurgerMenu();
+      
+      // Your existing project loading code
+      fetch('projectData.json')
+        .then(r => r.json())
+        .then(data => {
+          window.projectData = data;
+          renderProjects();
+        });
+    });
+
+    // Background vidéo optimisé
     function initBackground() {
       const canvas = document.getElementById('bgCanvas');
       const ctx = canvas.getContext('2d', { willReadFrequently: false });
@@ -123,7 +253,7 @@
       }
       
       function drawTiles(timestamp) {
-        if (!isDrawing && timestamp - lastUpdate > 32) { // Limit to ~30fps
+        if (!isDrawing && timestamp - lastUpdate > 32) { // Limite à ~30fps
           isDrawing = true;
           lastUpdate = timestamp;
           
@@ -156,7 +286,7 @@
         requestAnimationFrame(drawTiles);
       });
       
-      // Pause when tab is inactive
+      // Pause quand l'onglet est inactif
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
           video.pause();
@@ -166,18 +296,19 @@
       });
     }
 
-    // Initialize background when DOM is loaded
-    document.addEventListener('DOMContentLoaded', () => {
-      initBackground();
+    function initBurgerMenu() {
+      const burgerBtn = document.getElementById('burger-button');
+      const burgerMenu = document.getElementById('burger-menu');
+      const closeBurger = document.getElementById('close-burger');
       
-      // Your existing project loading code
-      fetch('projectData.json')
-        .then(r => r.json())
-        .then(data => {
-          window.projectData = data;
-          renderProjects();
-        });
-    });
+      burgerBtn.addEventListener('click', function() {
+        burgerMenu.classList.remove('-translate-x-full');
+      });
+      
+      closeBurger.addEventListener('click', function() {
+        burgerMenu.classList.add('-translate-x-full');
+      });
+    }
 
     // Rest of your existing project page JavaScript...
     let shown = 0;
