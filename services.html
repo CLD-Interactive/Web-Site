@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="darkreader-lock">
+  <meta name="color-scheme" content="light dark">
+  <title>Services - Portfolio Interactif</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="pictures/tab icon.png" type="image/x-icon">
+  <link rel="icon" type="image/png" href="pictures/tab icon.png" sizes="32x32">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    /* Styles identiques à votre index.html */
+    body {
+      min-height: 100vh;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      padding-top: 72px !important;
+      background-color: #000;
+    }
+    
+    #bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      display: block;
+      filter: none !important;
+    }
+    
+    /* Menu et boutons identiques */
+    header {
+      height: 72px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .nav-button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      border: 2px solid;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      color: white;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    
+    .button-frame {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border: 2px solid transparent;
+      border-radius: 0.5rem;
+      pointer-events: none;
+      transition: all 0.4s ease;
+    }
+    
+    .nav-button:hover .button-frame {
+      border-color: rgba(124, 58, 237, 0.8);
+      animation: pulseFrame 1.5s infinite;
+    }
+    
+    @keyframes pulseFrame {
+      0% { border-color: rgba(124, 58, 237, 0.4); }
+      50% { border-color: rgba(124, 58, 237, 0.9); }
+      100% { border-color: rgba(124, 58, 237, 0.4); }
+    }
+    
+    /* Style des tuiles de services */
+    .service-tile {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(124, 58, 237, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .service-tile:hover {
+      transform: translateY(-5px);
+      border-color: rgba(124, 58, 237, 0.8);
+    }
+    
+    /* Video background styles */
+    #sourceVideo {
+      display: none;
+    }
+    
+    /* Burger menu styles */
+    #burger-menu {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    #burger-menu.open {
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body class="font-sans relative min-h-screen">
+  <!-- Fond vidéo identique -->
+  <video id="sourceVideo" preload="auto" playsinline muted loop class="hidden">
+    <source src="video/BackDrop_services.webm" type="video/webm">
+    <source src="video/BackDrop_services.mp4" type="video/mp4">
+  </video>
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Barre de navigation identique -->
+  <header class="bg-black text-white p-4 fixed w-full top-0 z-50 flex justify-between items-center">
+    <div class="flex items-center space-x-3">
+      <img src="pictures/logo.png" alt="Logo" class="w-10 h-10 rounded-full object-cover border-2 border-purple-500">
+      <div class="text-xl font-bold">Mon Portfolio</div>
+    </div>
+
+    <button id="burger-button" class="md:hidden focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+    <nav class="hidden md:flex items-center space-x-4">
+      <a href="index.html" class="nav-button border-purple-500 hover:bg-purple-500/10">
+        <span class="button-frame"></span>
+        Accueil
+      </a>
+      <a href="projets.html" class="nav-button border-purple-500 hover:bg-purple-500/10">
+        <span class="button-frame"></span>
+        Projets
+      </a>
+      <a href="services.html" class="nav-button bg-purple-600 border-purple-600 hover:bg-purple-700">
+        <span class="button-frame"></span>
+        Services
+      </a>
+      <a href="#contact" class="nav-button bg-amber-600 border-amber-600 hover:bg-amber-700">
+        Contact
+      </a>
+    </nav>
+  </header>
+
+  <!-- Menu Burger mobile -->
+  <nav id="burger-menu" class="fixed inset-0 bg-black bg-opacity-95 backdrop-blur-md text-white p-10 space-y-4 z-50 md:hidden flex flex-col justify-center transform -translate-x-full transition-transform">
+    <button id="close-burger" class="absolute top-4 right-4 text-white text-3xl">&times;</button>
+    <a href="index.html" class="nav-button border-purple-500 hover:bg-purple-500/10 text-center">
+      Accueil
+    </a>
+    <a href="projets.html" class="nav-button border-purple-500 hover:bg-purple-500/10 text-center">
+      Projets
+    </a>
+    <a href="services.html" class="nav-button bg-purple-600 border-purple-600 hover:bg-purple-700 text-center">
+      Services
+    </a>
+    <a href="#contact" class="nav-button bg-amber-600 border-amber-600 hover:bg-amber-700 text-center">
+      Contact
+    </a>
+  </nav>
+
+  <!-- Contenu principal -->
+  <main class="max-w-6xl mx-auto px-6 py-20">
+    <h1 class="text-5xl font-bold mb-12 text-center">Mes Services</h1>
+
+ <!-- service TimeCode -->
+<div class="service-tile rounded-xl p-6">
+  <div class="mb-4">
+    <img src="pictures/TimeCode icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
+  </div>
+  <h3 class="text-2xl font-bold mb-3 text-center">[ TimeCode ]</h3>
+  
+  <!-- Description principale (gris clair) -->
+  <p class="text-gray-200 mb-4 leading-relaxed">
+    Synchronisation de séquences contrôlant diverses technologies : éclairage, vidéo, musique/son, effets de tremblement de terre, odeurs, vent, lasers, etc.
+  </p>
+  
+  <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
+  <div class="mb-4">
+    <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
+    <ul class="list-none pl-0 space-y-1 text-gray-400">
+    <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+      Un film augmenté avec odeurs, effets de lumières et tremblements de terre.</li>
+
+    <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+      Une forêt illuminée avec projection vidéo suivant une trame narrative et musicale.</li>
+     <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+      Un escape room avec événements programmés sur timer (changements d'ambiance, extraits audio de personnages).</li>
+    </ul>
+  </div>
+  
+  <!-- Note technique (gris foncé + italique) -->
+  <p class="text-gray-600 italic text-sm">
+    
+  </p>
+</div>
+
+      
+      <!-- Service Jeu -->
+<div class="service-tile rounded-xl p-6">
+  <div class="mb-4">
+    <img src="pictures/Jeu icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
+  </div>
+  <h3 class="text-2xl font-bold mb-3 text-center">[ Jeu ]</h3>
+  
+  <!-- Description principale (gris clair) -->
+  <p class="text-gray-200 mb-4 leading-relaxed">
+    Création d'un jeu questionnaire, d'arcade ou de jeu grandeur nature vivant sur mesure.
+    Avec possibilité d'interaction sur system d'éclairage, son, video, etc.
+  </p>
+  
+  <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
+  <div class="mb-4">
+    <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
+    <ul class="list-none pl-0 space-y-1 text-gray-400">
+    <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    Jeu de 1 à 4 joueurs. Celui qui appuie le plus souvent sur son bouton en 1 minute gagne !</li>
+
+    <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    Jeu solo. Une salle remplie de lasers rouges qui vous font perdre des points si touchés.Un seul devient bleu — touchez-le pour récolter un maximum de points en une minute. Tentez de battre le record !</li>
+     <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    Le joueur saute après un décompte, et son temps d’élévation détermine un score.</li>
+    </ul>
+  </div>
+  
+  <!-- Note technique (gris foncé + italique) -->
+  <p class="text-gray-600 italic text-sm">
+    
+  </p>
+</div>
+      
+      <!-- Service Controle -->
+<div class="service-tile rounded-xl p-6">
+  <div class="mb-4">
+    <img src="pictures/Control icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
+  </div>
+  <h3 class="text-2xl font-bold mb-3 text-center">[ Contrôle ]</h3>
+  
+  <!-- Description principale (gris clair) -->
+  <p class="text-gray-200 mb-4 leading-relaxed">
+    ----
+  </p>
+  
+  <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
+  <div class="mb-4">
+    <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
+    <ul class="list-none pl-0 space-y-1 text-gray-400">
+    <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+
+    <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+     <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+    </ul>
+  </div>
+  
+  <!-- Note technique (gris foncé + italique) -->
+  <p class="text-gray-600 italic text-sm">
+    
+  </p>
+</div>
+
+
+
+      <!-- Service Analog -->
+<div class="service-tile rounded-xl p-6">
+  <div class="mb-4">
+    <img src="pictures/Analog icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
+  </div>
+  <h3 class="text-2xl font-bold mb-3 text-center">[ Analog ]</h3>
+  
+  <!-- Description principale (gris clair) -->
+  <p class="text-gray-200 mb-4 leading-relaxed">
+    ----
+  </p>
+  
+  <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
+  <div class="mb-4">
+    <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
+    <ul class="list-none pl-0 space-y-1 text-gray-400">
+    <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+
+    <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+     <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+    </ul>
+  </div>
+  
+  <!-- Note technique (gris foncé + italique) -->
+  <p class="text-gray-600 italic text-sm">
+    
+  </p>
+</div>
+
+
+      <!-- Service Motion -->
+<div class="service-tile rounded-xl p-6">
+  <div class="mb-4">
+    <img src="pictures/Motion icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
+  </div>
+  <h3 class="text-2xl font-bold mb-3 text-center">[ Motion ]</h3>
+  
+  <!-- Description principale (gris clair) -->
+  <p class="text-gray-200 mb-4 leading-relaxed">
+    ---- 
+  </p>
+  
+  <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
+  <div class="mb-4">
+    <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
+    <ul class="list-none pl-0 space-y-1 text-gray-400">
+    <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+
+    <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+     <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+    </ul>
+  </div>
+  
+  <!-- Note technique (gris foncé + italique) -->
+  <p class="text-gray-600 italic text-sm">
+    
+  </p>
+</div>
+
+
+
+      <!-- Service Light -->
+<div class="service-tile rounded-xl p-6">
+  <div class="mb-4">
+    <img src="pictures/Light icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
+  </div>
+  <h3 class="text-2xl font-bold mb-3 text-center">[ Opérateur ]</h3>
+  
+  <!-- Description principale (gris clair) -->
+  <p class="text-gray-200 mb-4 leading-relaxed">
+    ---- 
+  </p>
+  
+  <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
+  <div class="mb-4">
+    <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
+    <ul class="list-none pl-0 space-y-1 text-gray-400">
+    <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+
+    <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+     <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+    </ul>
+  </div>
+  
+  <!-- Note technique (gris foncé + italique) -->
+  <p class="text-gray-600 italic text-sm">
+    
+  </p>
+</div>
+
+
+
+      <!-- Service consultation -->
+<div class="service-tile rounded-xl p-6">
+  <div class="mb-4">
+    <img src="pictures/Consultation icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
+  </div>
+  <h3 class="text-2xl font-bold mb-3 text-center">[ Consultation ]</h3>
+  
+  <!-- Description principale (gris clair) -->
+  <p class="text-gray-200 mb-4 leading-relaxed">
+    ---- 
+  </p>
+  
+  <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
+  <div class="mb-4">
+    <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
+    <ul class="list-none pl-0 space-y-1 text-gray-400">
+    <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+
+    <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+     <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+    </ul>
+  </div>
+  
+  <!-- Note technique (gris foncé + italique) -->
+  <p class="text-gray-600 italic text-sm">
+    
+  </p>
+</div>
+
+
+
+
+      <!-- Service consultation -->
+<div class="service-tile rounded-xl p-6">
+  <div class="mb-4">
+    <img src="pictures/Recherche icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
+  </div>
+  <h3 class="text-2xl font-bold mb-3 text-center">[ R&D ]</h3>
+  
+  <!-- Description principale (gris clair) -->
+  <p class="text-gray-200 mb-4 leading-relaxed">
+    ---- 
+  </p>
+  
+  <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
+  <div class="mb-4">
+    <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
+    <ul class="list-none pl-0 space-y-1 text-gray-400">
+    <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+
+    <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+     <li class="flex items-start">
+      <span class="text-purple-400 mr-2">•</span>
+    ----</li>
+    </ul>
+  </div>
+  
+  <!-- Note technique (gris foncé + italique) -->
+  <p class="text-gray-600 italic text-sm">
+    
+  </p>
+</div>
+
+
+
+
+    </div>
+  </main>
+
+  <script>
+    // Variables globales pour gestion mémoire
+    let resources = {
+      intervals: [],
+      observers: [],
+      listeners: []
+    };
+
+    // Fonction de nettoyage
+    function cleanupResources() {
+      resources.intervals.forEach(clearInterval);
+      resources.observers.forEach(obs => obs.disconnect());
+      resources.listeners.forEach(({element, type, handler}) => {
+        element.removeEventListener(type, handler);
+      });
+    }
+
+    // Initialisation optimisée
+    document.addEventListener('DOMContentLoaded', () => {
+      // Gestion du background vidéo
+      initBackground();
+      // Menu Burger
+      initBurgerMenu();
+    });
+
+    // Background vidéo optimisé
+    function initBackground() {
+      const canvas = document.getElementById('bgCanvas');
+      const ctx = canvas.getContext('2d', { willReadFrequently: false });
+      const video = document.getElementById('sourceVideo');
+      
+      let lastUpdate = 0;
+      let isDrawing = false;
+      
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      
+      function drawTiles(timestamp) {
+        if (!isDrawing && timestamp - lastUpdate > 32) { // Limite à ~30fps
+          isDrawing = true;
+          lastUpdate = timestamp;
+          
+          if (video.readyState >= 2) {
+            const tileSize = Math.min(window.innerWidth / 4, 256);
+            const cols = Math.ceil(canvas.width / tileSize);
+            const rows = Math.ceil(canvas.height / tileSize);
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (let y = 0; y < rows; y++) {
+              for (let x = 0; x < cols; x++) {
+                ctx.drawImage(video, x * tileSize, y * tileSize, tileSize, tileSize);
+              }
+            }
+          }
+          isDrawing = false;
+        }
+        requestAnimationFrame(drawTiles);
+      }
+      
+      video.addEventListener('loadeddata', () => {
+        resizeCanvas();
+        video.play().catch(e => console.log("Autoplay blocked:", e));
+        requestAnimationFrame(drawTiles);
+      });
+      
+      window.addEventListener('resize', () => {
+        resizeCanvas();
+        requestAnimationFrame(drawTiles);
+      });
+      
+      // Pause quand l'onglet est inactif
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          video.pause();
+        } else {
+          video.play().catch(e => console.log("Playback error:", e));
+        }
+      });
+    }
+
+    function initBurgerMenu() {
+      const burgerBtn = document.getElementById('burger-button');
+      const burgerMenu = document.getElementById('burger-menu');
+      const closeBurger = document.getElementById('close-burger');
+      
+      burgerBtn.addEventListener('click', function() {
+        burgerMenu.classList.remove('-translate-x-full');
+      });
+      
+      closeBurger.addEventListener('click', function() {
+        burgerMenu.classList.add('-translate-x-full');
+      });
+    }
+  </script>
+</body>
+</html>
