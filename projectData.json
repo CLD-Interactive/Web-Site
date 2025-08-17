@@ -257,7 +257,7 @@
 },
 {
 "titre": "Fkn.Lee – Broken Heart Emoji",
-"description": "Vidéoclips, Liens: <a href='https://www.instagram.com/reel/DGQvf8jAb64/?igsh=MTE5MGhpaHBsejZuMA%3D%3D&fbclid=IwZXh0bgNhZW0CMTAAYnJpZBExOFNRZmE4QXF2cEhaQjJrdAEeGAcjSxajKlcsEbh7d7tRMEGG-XuzIveIc04UweFvee-KgkvaqmbZCKVTtWw_aem_H7oVUwMGAy4DCDF28UfWIA' target='_blank'>Instagram</a>",
+"description": "Vidéoclips, Liens: https://www.instagram.com/reel/DGQvf8jAb64/?igsh=MTE5MGhpaHBsejZuMA%3D%3D&fbclid=IwZXh0bgNhZW0CMTAAYnJpZBExOFNRZmE4QXF2cEhaQjJrdAEeGAcjSxajKlcsEbh7d7tRMEGG-XuzIveIc04UweFvee-KgkvaqmbZCKVTtWw_aem_H7oVUwMGAy4DCDF28UfWIA",
 "tags": ["DMX", "Éclairagiste", "VidéoClip"],
 "images": [],
 "implications": "Éclairage et captation vidéo au smartphone _(caméraman amateur)_",
@@ -273,7 +273,7 @@
 },
 {
 "titre": "Cr34te – The Future Is Now",
-"description": "Vidéo promotionnel, Liens : <a href='https://www.facebook.com/innovationscr34te/videos/507209314357688' target='_blank'>Facebook</a>",
+"description": "Vidéo promotionnel, Liens : https://www.facebook.com/innovationscr34te/videos/507209314357688",
 "tags": ["VidéoClip", "Arduino/ESP32", "Design Électroniques"],
 "images": [],
 "implications": "Création de props, dont un dispositif futuriste pour \"update the system\" et une boîte métallique dorsale simulant un système de ventilation.",
@@ -409,7 +409,7 @@
 },
 {
 "titre": "Creative Bus – Festival LVL UP (Laval)",
-"description": "Ambiance lumière et musique synchronisées à l’intérieur d’un autobus urbain. Liens : <a href='https://www.facebook.com/innovationscr34te/videos/1233431553501776' target='_blank'>Facebook</a>",
+"description": "Ambiance lumière et musique synchronisées à l’intérieur d’un autobus urbain. Liens : https://www.facebook.com/innovationscr34te/videos/1233431553501776",
 "tags": ["PixelMap", "Immersif", "Resolume", "Séquence/Timecode", "Festival"],
 "images": [],
 "implications": "- Installation de l’éclairage    - Programmation en équipe    - Consultation",
@@ -433,7 +433,7 @@
 },
 {
 "titre": "Interface DMX UI/UX – CITT",
-"description": "Écran tactile permettant aux visiteurs de contrôler des luminaires montés sur winch DMX. Liens : <a href='https://www.facebook.com/innovationscr34te/videos/794440922181579' target='_blank'>Facebook</a>",
+"description": "Écran tactile permettant aux visiteurs de contrôler des luminaires montés sur winch DMX. Liens : https://www.facebook.com/innovationscr34te/videos/794440922181579",
 "tags": ["DMX", "UI/UX", "Touchdesigner", "Événement corporatif", "Consultant technique", "Salon / Convention"],
 "images": [],
 "implications": "- Assemblage des visuels fournis    - Motion design    - Programmation de l’interface    - Déclenchement sécurisé des cues",
