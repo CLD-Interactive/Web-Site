@@ -1,19 +1,18 @@
 [
-  
+{
+"titre": "OMNIA – Withings (CES Las Vegas)",
+"description": "La compagnie de produits de santé Withings propose au salon CES le concept de la balance OMNIA, qui pèse et scanne le corps de son usager pour en faire un bilan de santé complet de l'individu. https://www.tiktok.com/@tomsguide/video/7458039339226811690?q=Withings&t=1752261563632 #1  https://www.tiktok.com/@digitaltrends/video/7457636169858239786?q=Withings&t=1752261563632 #2  https://www.tiktok.com/@jennybdoll/video/7461005105077194026?q=OMNIA%20mirror&t=1752261800233 #3  https://www.tiktok.com/@jmillionnyc/video/7460580214850997550?q=OMNIA%20mirror&t=1752261800233 #4  https://www.tiktok.com/@tomsguide/video/7458039339226811690?q=OMNIA%20mirror&t=1752261800233 #5  https://www.tiktok.com/@sadiestlawrence/video/7458880761622547758?q=OMNIA%20mirror&t=1752261800233 #6  https://www.tiktok.com/@tech_like_vera/video/7458025006249856278?q=OMNIA%20mirror&t=1752261800233 #7  https://www.tiktok.com/@lesnumeriques/video/7458230168730242306?q=OMNIA%20mirror&t=1752261800233 #8  https://www.tiktok.com/@frandroid_/video/7457102029823954198?q=OMNIA%20mirror%20CES&t=1752262331325 #9 ",
+"tags": ["PixelMap", "Tracking", "Touchdesigner", "UI/UX", "Motion Design", "Événement corporatif", "Activation de marque", "Salon / Convention", "Consultant technique"],
+"images": ["youtube:FmxgHOPV29g", "pictures/OMNIA/OMNIA 01.jpg", "pictures/OMNIA/OMNIA 02.jpg", "pictures/OMNIA/OMNIA 03.jpg", "pictures/OMNIA/OMNIA 04.jpg", "pictures/OMNIA/OMNIA 05.jpg", "pictures/OMNIA/OMNIA 06.jpg", "pictures/OMNIA/OMNIA 07.jpg", "pictures/OMNIA/OMNIA 08.jpg"],
+"implications": "Consultation à la table d'idées - Intégration de sensors de présence - Intégration de graphismes fournis par le client - Création et animation de l'avatar OMNIA - Proposition et intégration d'effets sonores - Synchronisation de l'éclairage avec l'image - Intégration d'une tablette pour choisir un thème - Installation et surveillance à Las Vegas",
+"note": ""
+},
 {
 "titre": "Projet ECHO – Desjardins (3 éditions)",
 "description": "Structure hexagonale représentant un magnétophone. Quand les gens parlent ou crient dedans, ça active la lumière de façon exponentielle selon leur voix. https://www.tiktok.com/@uglyandtraveling/video/7444034857115585814?q=calvacade%20of%20light&t=1752262807555",
 "tags": ["PixelMap", "AI", "Interactif", "Collect de Data", "Activation de marque", "Audio", "Desjardins", "Touchdesigner", ""],
 "images": ["youtube:MVsuHatjMTc", "pictures/Hexaphone/Echo 1.jpg", "pictures/Hexaphone/Echo 2.jpg", "", "", "", "", "", ""],
 "implications": "Intégration de microphones e609 dans la structure - Intégration d'IA qui segmente la voix humaine pour supprimer les bruits ambiants indésirables - Intégration d'effets sonores ludiques - Collecte de data sur le nombre d'activations - Programmation interactive du LED",
-"note": ""
-},
-{
-"titre": "Le Cube Énergir",
-"description": "Questionnaire interactif dans un container. Questions sur Énergir posées sur un écran central, les joueurs répondent avec les écrans tactiles sur les côtés.",
-"tags": ["Arduino/ESP32", "DMX", "UI/UX", "Interactif", "Collect de Data", "Touchdesigner", "Activation de marque", "", ""],
-"images": ["youtube:LK5CJSxtywA", "", "", "", "", "", "", "", ""],
-"implications": "Intégration des graphismes fournis par un motion designer - Programmation de la mécanique de jeu - Intégration et programmation d'une télécommande infrarouge pour modifier le jeu par les agents d'activation sur place - Installation de la régie en équipe - Programmation des cues DMX - Collection de données sur le nombre de joueurs participants",
 "note": ""
 },
 {
@@ -25,12 +24,20 @@
 "note": ""
 },
 {
-"titre": "Borne Point Scène – IGA",
-"description": "Pour la promotion des points Scène, IGA cherche à créer une borne avec jeu interactif pour gagner des points scène servant à l'achat de produits d'épicerie.",
-"tags": ["UI/UX", "Game", "Collect de Data", "Touchdesigner", "Activation de marque", "", "", "", ""],
-"images": ["youtube:UolQlGr_05I", "", "", "", "", "", "", "", ""],
-"implications": "Aide à la conception du projet - Programmation d'un jeu avec système de probabilités de style \"urnes\" - Intégration et animation des graphismes fournis par un infographe - Collecte de données sur le nombre de joueurs participants et le nombre de points distribués",
-"note": "Graphisme: Sebastien Sigouin-Couturier"
+"titre": "Astronaut Run !",
+"description": "Jeu de 1 à 4 joueurs. Celui qui appuie le plus souvent sur son bouton en 1 minute gagne !",
+"tags": ["Arduino/ESP32", "UI/UX", "Game", "Motion Design", "Touchdesigner", "Événement corporatif", "", "", ""],
+"images": ["youtube:uLQ8B2CTKpg", "", "", "", "", "", "", "", ""],
+"implications": "Conception et logique de jeu - Design et fabrication de Sensor Box UDP - Modification de boutons d’arcade avec LED digital intégrés - Design et programmation UI/UX - Programmation de plusieurs modes de jeu variables",
+"note": ""
+},
+{
+"titre": "Le Cube Énergir",
+"description": "Questionnaire interactif dans un container. Questions sur Énergir posées sur un écran central, les joueurs répondent avec les écrans tactiles sur les côtés.",
+"tags": ["Arduino/ESP32", "DMX", "UI/UX", "Interactif", "Collect de Data", "Touchdesigner", "Activation de marque", "", ""],
+"images": ["youtube:LK5CJSxtywA", "", "", "", "", "", "", "", ""],
+"implications": "Intégration des graphismes fournis par un motion designer - Programmation de la mécanique de jeu - Intégration et programmation d'une télécommande infrarouge pour modifier le jeu par les agents d'activation sur place - Installation de la régie en équipe - Programmation des cues DMX - Collection de données sur le nombre de joueurs participants",
+"note": ""
 },
 {
 "titre": "Atlantide – Restaurant de l’hôtel de la Cité perdue",
@@ -46,14 +53,6 @@
 "tags": ["Arduino/ESP32", "PixelMap", "DMX", "Immersif", "Touchdesigner", "Mapping Vidéo", "Séquence/Timecode", "Animation 3D", ""],
 "images": ["youtube:E6oopy3AhBU", "", "", "", "", "", "", "", ""],
 "implications": "Mapping vidéo - Patch et programmation de la séquence DMX - Tournage sur écran vert - Rigging d'un modèle 3D - Animation 3D - Montage de la mise en scène finale avec mask - Programmation de boutons d'arcade avec Arduino pour contrôle de la salle - Interaction sur faisceaux lumineux - Idéation partielle - Intégration d'une version anglaise",
-"note": ""
-},
-{
-"titre": "OMNIA – Withings (CES Las Vegas)",
-"description": "La compagnie de produits de santé Withings propose au salon CES le concept de la balance OMNIA, qui pèse et scanne le corps de son usager pour en faire un bilan de santé complet de l'individu. https://www.tiktok.com/@tomsguide/video/7458039339226811690?q=Withings&t=1752261563632 #1  https://www.tiktok.com/@digitaltrends/video/7457636169858239786?q=Withings&t=1752261563632 #2  https://www.tiktok.com/@jennybdoll/video/7461005105077194026?q=OMNIA%20mirror&t=1752261800233 #3  https://www.tiktok.com/@jmillionnyc/video/7460580214850997550?q=OMNIA%20mirror&t=1752261800233 #4  https://www.tiktok.com/@tomsguide/video/7458039339226811690?q=OMNIA%20mirror&t=1752261800233 #5  https://www.tiktok.com/@sadiestlawrence/video/7458880761622547758?q=OMNIA%20mirror&t=1752261800233 #6  https://www.tiktok.com/@tech_like_vera/video/7458025006249856278?q=OMNIA%20mirror&t=1752261800233 #7  https://www.tiktok.com/@lesnumeriques/video/7458230168730242306?q=OMNIA%20mirror&t=1752261800233 #8  https://www.tiktok.com/@frandroid_/video/7457102029823954198?q=OMNIA%20mirror%20CES&t=1752262331325 #9 ",
-"tags": ["PixelMap", "Tracking", "Touchdesigner", "UI/UX", "Motion Design", "Événement corporatif", "Activation de marque", "Salon / Convention", "Consultant technique"],
-"images": ["youtube:FmxgHOPV29g", "pictures/OMNIA/OMNIA 01.jpg", "pictures/OMNIA/OMNIA 02.jpg", "pictures/OMNIA/OMNIA 03.jpg", "pictures/OMNIA/OMNIA 04.jpg", "pictures/OMNIA/OMNIA 05.jpg", "pictures/OMNIA/OMNIA 06.jpg", "pictures/OMNIA/OMNIA 07.jpg", "pictures/OMNIA/OMNIA 08.jpg"],
-"implications": "Consultation à la table d'idées - Intégration de sensors de présence - Intégration de graphismes fournis par le client - Création et animation de l'avatar OMNIA - Proposition et intégration d'effets sonores - Synchronisation de l'éclairage avec l'image - Intégration d'une tablette pour choisir un thème - Installation et surveillance à Las Vegas",
 "note": ""
 },
 {
@@ -121,14 +120,6 @@
 "note": ""
 },
 {
-"titre": "Astronaut Run !",
-"description": "Jeu de 1 à 4 joueurs. Celui qui appuie le plus souvent sur son bouton en 1 minute gagne !",
-"tags": ["Arduino/ESP32", "UI/UX", "Game", "Motion Design", "Touchdesigner", "Événement corporatif", "", "", ""],
-"images": ["youtube:uLQ8B2CTKpg", "", "", "", "", "", "", "", ""],
-"implications": "Conception et logique de jeu - Design et fabrication de Sensor Box UDP - Modification de boutons d’arcade avec LED digital intégrés - Design et programmation UI/UX - Programmation de plusieurs modes de jeu variables",
-"note": ""
-},
-{
 "titre": "Ladder Game",
 "description": "Deux joueurs, chacun avec trois boutons. Une échelle en tube LED s’allume à chaque bonne réponse. Le joueur qui allume tous les barreaux le plus vite gagne !",
 "tags": ["Arduino/ESP32", "PixelMap", "Game", "Design Électroniques", "Touchdesigner", "Festival", "Événement corporatif", "", ""],
@@ -150,6 +141,14 @@
 "tags": ["UI/UX", "Game", "Interactif", "Collect de Data", "Festival", "Activation de marque", "Desjardins", "Touchdesigner", ""],
 "images": ["youtube:jxbGZ-WUi7A", "", "", "", "", "", "", "", ""],
 "implications": "Mécanique de jeu - Assemblage graphique et motion - Récolte et interprétation des données - Installation - Logistique - Proposition de graphisme",
+"note": ""
+},
+{
+"titre": "Creative Bus – Festival LVL UP (Laval)",
+"description": "Création d'une séquence lumière et musique de type \"timecode\" dans un autobus de la ville de Laval pour le festival Lvl Up. https://www.facebook.com/innovationscr34te/videos/1233431553501776",
+"tags": ["PixelMap", "Immersif", "Resolume", "Séquence/Timecode", "Festival", "", "", "", ""],
+"images": ["pictures/Creative-Bus/Creative-Bus 01.jpg", "", "", "", "", "", "", "", ""],
+"implications": "Installation de l'éclairage - Programmation en équipe - Consultation",
 "note": ""
 },
 {
@@ -185,38 +184,6 @@
 "note": ""
 },
 {
-"titre": "Peroni - F1 de Montréal",
-"description": "Voiture Peroni se trouve dans une salle sur une plateforme. Une séquence de sons et éclairages se déclenche quand les agents d'activation appuient sur un bouton.Le moteur de la voiture se met à grogner alors que les feux de départ classiques de la F1 se font voir et entendre. Au \"départ\", des effets sonores du modèle Peroni se font entendre et de la fumée s'échappe de la plateforme.",
-"tags": ["Arduino/ESP32", "DMX", "Touchdesigner", "Séquence/Timecode", "Événement corporatif", "Activation de marque", "", "", ""],
-"images": ["youtube:D84beS9rzw8", "", "", "", "", "", "", "", ""],
-"implications": "Programmation de la séquence son, éclairage et fumée- Intégration de la mécanique de fonctionnement",
-"note": ""
-},
-{
-"titre": "Questionnaire de parcours Bénéva – Festival Juste pour rire",
-"description": "Questionnaire servant à diriger les gens vers la meilleure scène selon leurs goûts humoristiques.",
-"tags": ["UI/UX", "Collect de Data", "Touchdesigner", "Festival", "Activation de marque", "Consultant technique", "Groupe CH/Evenko", "", ""],
-"images": ["youtube:JweIq5UGCsI", "", "", "", "", "", "", "", ""],
-"implications": "Programmation d'un questionnaire - Système d'envoi par courriel automatique - Rendu 3D d'une map du Quartier des Spectacles avec mouvements de caméra - Ajout de motion design",
-"note": ""
-},
-{
-"titre": "Le Téléphone François Pérusse – Festival Juste pour rire",
-"description": "Téléphone géant se trouve au Quartier des Spectacles. Quand on appuie sur un numéro, un sketch de François Pérusse se fait entendre. Quand on entre les numéros secrets, un sketch secret se fait entendre.",
-"tags": ["Arduino/ESP32", "Touchdesigner", "Festival", "Audio", "", "", "", "", ""],
-"images": ["youtube:kwfnezfmR5M", "pictures/Perusse/perusse 01.webp", "pictures/Perusse/perusse 02.webp", "pictures/Perusse/perusse 03.jpg", "", "", "", "", ""],
-"implications": "Normalisation des fichiers audio - Programmation et intégration d'une séquence de numéros mystères",
-"note": ""
-},
-{
-"titre": "Creative Bus – Festival LVL UP (Laval)",
-"description": "Création d'une séquence lumière et musique de type \"timecode\" dans un autobus de la ville de Laval pour le festival Lvl Up. https://www.facebook.com/innovationscr34te/videos/1233431553501776",
-"tags": ["PixelMap", "Immersif", "Resolume", "Séquence/Timecode", "Festival", "", "", "", ""],
-"images": ["Portefolio/pictures/Creative-Bus 01.jpg", "", "", "", "", "", "", "", ""],
-"implications": "Installation de l'éclairage - Programmation en équipe - Consultation",
-"note": ""
-},
-{
 "titre": "Dunk It – Can You Dunk ? (Total Event)",
 "description": "Jeu interactif conçu pour Total Event. Le joueur saute après un décompte, et son temps d’élévation détermine un score, un titre et un GIF animé.",
 "tags": ["Arduino/ESP32", "UI/UX", "Game", "Motion Design", "Touchdesigner", "Événement corporatif", "Audio", "AI", ""],
@@ -233,19 +200,19 @@
 "note": ""
 },
 {
-"titre": "Le 405",
-"description": "Illumination d'un parc à Vaudreuil-Dorion, avec contrôle client personnalisé sur écran tactile.",
-"tags": ["DMX", "PixelMap", "Onyx", "Touchdesigner", "Éclairagiste", "", "", "", ""],
-"images": ["youtube:uEuZgl1cPbs", "", "", "", "", "", "", "", ""],
-"implications": "Patch et organisation réseautique du système d'éclairage à travers le parc - Programmation de thématiques de couleur et patterns d'éclairage - Intégration d'un système d'horaire pour fermer les lumières à 23h - Intégration d'un système de contrôle en ligne pour support technique à distance - Opération de l'éclairage lors d'événements spéciaux du 405",
+"titre": "Peroni - F1 de Montréal",
+"description": "Voiture Peroni se trouve dans une salle sur une plateforme. Une séquence de sons et éclairages se déclenche quand les agents d'activation appuient sur un bouton.Le moteur de la voiture se met à grogner alors que les feux de départ classiques de la F1 se font voir et entendre. Au \"départ\", des effets sonores du modèle Peroni se font entendre et de la fumée s'échappe de la plateforme.",
+"tags": ["Arduino/ESP32", "DMX", "Touchdesigner", "Séquence/Timecode", "Événement corporatif", "Activation de marque", "", "", ""],
+"images": ["youtube:D84beS9rzw8", "", "", "", "", "", "", "", ""],
+"implications": "Programmation de la séquence son, éclairage et fumée- Intégration de la mécanique de fonctionnement",
 "note": ""
 },
 {
-"titre": "Le Foyer chanceux Loto-Québec - Festival Montréal en Lumière",
-"description": "Gros \"feu de camp\" en lumière LED sur la place des festivals. 10 chaises munies de boutons d'arcade disposées autour du feu. Première phase : le feu s'éteint et les participants doivent le rallumer en appuyant sur leur bouton quand celui-ci s'allume. À chaque appui synchronisé, le feu flash devant eux et reprend de l'intensité jusqu'à être complètement allumé. Deuxième phase : les chaises s'allument de façon aléatoire et si une chaise reste allumée, elle gagne un prix. Si c'est le feu qui reste allumé, \"la maison a gagné\".",
-"tags": ["Arduino/ESP32", "PixelMap", "Groupe CH/Evenko", "Game", "Design Électroniques", "Collect de Data", "Touchdesigner", "Festival", "Activation de marque"],
-"images": ["youtube:ajmZPZ9-l4c", "", "", "", "", "", "", "", ""],
-"implications": "Participation à l'idéation du concept - Fabrication de boutons d'arcade LED étanches - Intégration dans le mobilier - Planification du matériel nécessaire - Montage de la régie - Programmation du jeu avec système de gagnant aléatoire et limité par un nombre spécifique par jour - Programmation de l'éclairage - Collecte de données sur le nombre de participants et le nombre de gagnants - Intégration d'un système de contrôle en ligne pour support technique à distance",
+"titre": "Le Téléphone François Pérusse – Festival Juste pour rire",
+"description": "Téléphone géant se trouve au Quartier des Spectacles. Quand on appuie sur un numéro, un sketch de François Pérusse se fait entendre. Quand on entre les numéros secrets, un sketch secret se fait entendre.",
+"tags": ["Arduino/ESP32", "Touchdesigner", "Festival", "Audio", "", "", "", "", ""],
+"images": ["youtube:kwfnezfmR5M", "pictures/Perusse/perusse 01.webp", "pictures/Perusse/perusse 02.webp", "pictures/Perusse/perusse 03.jpg", "", "", "", "", ""],
+"implications": "Normalisation des fichiers audio - Programmation et intégration d'une séquence de numéros mystères",
 "note": ""
 },
 {
@@ -257,59 +224,11 @@
 "note": ""
 },
 {
-"titre": "Lumifest 2024 – Musée Espace Culturel de Repentigny",
-"description": "Conception d'une ambiance éclectique alternative pour le musée de l'espace culturel de Repentigny pour le Lumifest 2024.",
-"tags": ["PixelMap", "DMX", "Tracking", "Immersif", "Touchdesigner", "Festival", "Audio", "", ""],
-"images": ["youtube:J8nEs_JNrqA", "", "", "", "", "", "", "", ""],
-"implications": "Installation - Intégration de deux Kinect pour le lustre interactif - Programmation de moving lights et de tubes LED - Intégration de trames musicales",
-"note": ""
-},
-{
-"titre": "Piano interactif – Winterlude",
-"description": "Pour le festival Winterlude et mandaté par Patrimoine Canada, se trouvaient 3 jardins de lumière reliés à des pianos. Les passants, jouant du piano, activaient les lumières selon les notes jouées.",
-"tags": ["PixelMap", "Interactif", "Resolume", "Audio", "Festival", "", "", "", ""],
-"images": ["youtube:scEZ76_KMwU", "", "", "", "", "", "", "", ""],
-"implications": "Installation - Programmation",
-"note": ""
-},
-{
-"titre": "Lumin’art – Extension hivernale du 405",
-"description": "Illumination d'un parcours lumineux hivernal et d'œuvres d'art sur canvas illuminées.",
-"tags": ["DMX", "Touchdesigner", "Éclairagiste", "", "", "", "", "", ""],
-"images": ["youtube:VctjBiSnqaw", "pictures/Lumin'art/Luminart07.jpg", "pictures/Lumin'art/Luminart04.jpg", "pictures/Lumin'art/Luminart012.jpg", "pictures/Lumin'art/Luminart011.jpg", "pictures/Lumin'art/Luminart013.jpg", "pictures/Lumin'art/Luminart09.jpg", "pictures/Lumin'art/Luminart010.jpg", "pictures/Lumin'art/Luminart02.jpg"],
-"implications": "Installation de la régie - Programmation et patch de l'éclairage - Intégration d'un système de fermeture automatique à 23h",
-"note": ""
-},
-{
-"titre": "Armada de Blainville",
-"description": "Séquence éclairage et musique pour l'entrée des joueurs d'une équipe de hockey junior. (2 éditions)",
-"tags": ["Onyx", "Resolume", "Éclairagiste", "Séquence/Timecode", "Sport", "", "", "", ""],
-"images": ["youtube:sTocpymd1_I", "youtube:umQi_hP4Hiw", "", "", "", "", "", "", ""],
-"implications": "Programmation d'une séquence de 15 minutes avec des moving lights - Intégration avec l'équipe technique locale - Communication entre Resolume et Onyx (Art-Net DMXin local network) - Utilisation de Capture 2025 pour pré-programmer en mode virtuel",
-"note": ""
-},
-{
-"titre": "Vert le But – Centre Bell (2 éditions)",
-"description": "Jeu éducatif sur le tri des matières résiduelles, utilisant des écrans et boutons d’arcade. Les réponses influençaient un système de pointage visible sur un troisième écran positionné plus haut, avec un affichage inspiré des panneaux de score de hockey.",
-"tags": ["Design Électroniques", "Motion Design", "Collect de Data", "Game", "Touchdesigner", "Activation de marque", "Groupe CH/Evenko", "", ""],
-"images": ["youtube:5DUBbQEB_So", "pictures/Vert le But/vert le but 01.jpg", "", "", "", "", "", "", ""],
-"implications": "Programmation de la logique de jeu - Intégration des assets graphiques fournis par une graphiste - Conception et fabrication d’une sensor box (OSC) - Installation sur site",
-"note": ""
-},
-{
-"titre": "Jeu du CN - Festival Montréal en Lumière",
-"description": "Jeu d’adresse consistant à faire glisser un anneau métallique le long d’une tige en acier formant le logo du CN, sans toucher la structure.",
-"tags": ["Arduino/ESP32", "Game", "Touchdesigner", "Festival", "Groupe CH/Evenko", "", "", "", ""],
-"images": ["youtube:QjcNjSSKPJM", "", "", "", "", "", "", "", ""],
-"implications": "Design et création d'une sensor box OSC - Programmation du jeu",
-"note": ""
-},
-{
-"titre": "Questionnaire Chevrolet avec Richardson Zéphir – Festival Juste pour rire",
-"description": "Deux questionnaires sur le Chevrolet TrailBlazer et Trax. Vidéos animées par Richardson Zéphyr.",
-"tags": ["UI/UX", "Collect de Data", "Touchdesigner", "Festival", "Activation de marque", "", "", "", ""],
-"images": ["youtube:zkhdiuuzVuE", "youtube:2cnIPFLxFRg", "", "", "", "", "", "", ""],
-"implications": "Programmation du jeu - Intégration de visuels dans le jeu",
+"titre": "Le 405",
+"description": "Illumination d'un parc à Vaudreuil-Dorion, avec contrôle client personnalisé sur écran tactile.",
+"tags": ["DMX", "PixelMap", "Onyx", "Touchdesigner", "Éclairagiste", "", "", "", ""],
+"images": ["youtube:uEuZgl1cPbs", "", "", "", "", "", "", "", ""],
+"implications": "Patch et organisation réseautique du système d'éclairage à travers le parc - Programmation de thématiques de couleur et patterns d'éclairage - Intégration d'un système d'horaire pour fermer les lumières à 23h - Intégration d'un système de contrôle en ligne pour support technique à distance - Opération de l'éclairage lors d'événements spéciaux du 405",
 "note": ""
 },
 {
@@ -353,6 +272,62 @@
 "note": ""
 },
 {
+"titre": "VSLR - Festival vue sur la relève",
+"description": "Conception du logo \"VLSR\" pour le tournage du festival en mode virtuel.",
+"tags": ["PixelMap", "DMX", "Resolume", "Éclairagiste", "VidéoClip", "", "", "", ""],
+"images": ["youtube:TXoq5w7WHKw", "pictures/VSLR/VSLR 01.jpg", "pictures/VSLR/VSLR 04.jpg", "pictures/VSLR/VSLR 10.jpg", "pictures/VSLR/VSLR 11.jpg", "pictures/VSLR/VSLR 13.jpg", "", "", ""],
+"implications": "Programmation complète sans ordinateur (entièrement sur Arduino) - Communication série entre plusieurs microcontrôleurs (ancienne méthode) - Déclenchement d’une machine à fumée via protocole DMX - Intégration de strips LED digitales - Design narratif clair et immersif - Installation robuste et autonome pour une utilisation répétée en escape room",
+"note": ""
+},
+{
+"titre": "Le Foyer chanceux Loto-Québec - Festival Montréal en Lumière",
+"description": "Gros \"feu de camp\" en lumière LED sur la place des festivals. 10 chaises munies de boutons d'arcade disposées autour du feu. Première phase : le feu s'éteint et les participants doivent le rallumer en appuyant sur leur bouton quand celui-ci s'allume. À chaque appui synchronisé, le feu flash devant eux et reprend de l'intensité jusqu'à être complètement allumé. Deuxième phase : les chaises s'allument de façon aléatoire et si une chaise reste allumée, elle gagne un prix. Si c'est le feu qui reste allumé, \"la maison a gagné\".",
+"tags": ["Arduino/ESP32", "PixelMap", "Groupe CH/Evenko", "Game", "Design Électroniques", "Collect de Data", "Touchdesigner", "Festival", "Activation de marque"],
+"images": ["youtube:ajmZPZ9-l4c", "", "", "", "", "", "", "", ""],
+"implications": "Participation à l'idéation du concept - Fabrication de boutons d'arcade LED étanches - Intégration dans le mobilier - Planification du matériel nécessaire - Montage de la régie - Programmation du jeu avec système de gagnant aléatoire et limité par un nombre spécifique par jour - Programmation de l'éclairage - Collecte de données sur le nombre de participants et le nombre de gagnants - Intégration d'un système de contrôle en ligne pour support technique à distance",
+"note": ""
+},
+{
+"titre": "Piano interactif – Winterlude",
+"description": "Pour le festival Winterlude et mandaté par Patrimoine Canada, se trouvaient 3 jardins de lumière reliés à des pianos. Les passants, jouant du piano, activaient les lumières selon les notes jouées.",
+"tags": ["PixelMap", "Interactif", "Resolume", "Audio", "Festival", "", "", "", ""],
+"images": ["youtube:scEZ76_KMwU", "", "", "", "", "", "", "", ""],
+"implications": "Installation - Programmation",
+"note": ""
+},
+{
+"titre": "Lumin’art – Extension hivernale du 405",
+"description": "Illumination d'un parcours lumineux hivernal et d'œuvres d'art sur canvas illuminées.",
+"tags": ["DMX", "Touchdesigner", "Éclairagiste", "", "", "", "", "", ""],
+"images": ["youtube:VctjBiSnqaw", "pictures/Lumin'art/Luminart07.jpg", "pictures/Lumin'art/Luminart04.jpg", "pictures/Lumin'art/Luminart12.jpg", "pictures/Lumin'art/Luminart11.jpg", "pictures/Lumin'art/Luminart13.png", "pictures/Lumin'art/Luminart09.jpg", "pictures/Lumin'art/Luminart10.jpg", "pictures/Lumin'art/Luminart02.jpg"],
+"implications": "Installation de la régie - Programmation et patch de l'éclairage - Intégration d'un système de fermeture automatique à 23h",
+"note": ""
+},
+{
+"titre": "Armada de Blainville",
+"description": "Séquence éclairage et musique pour l'entrée des joueurs d'une équipe de hockey junior. (2 éditions)",
+"tags": ["Onyx", "Resolume", "Éclairagiste", "Séquence/Timecode", "Sport", "", "", "", ""],
+"images": ["youtube:sTocpymd1_I", "youtube:umQi_hP4Hiw", "pictures/Armada/Armada 06.jpg", "pictures/Armada/Armada 05.jpg", "pictures/Armada/Armada 04.jpg", "pictures/Armada/Armada 03.jpg", "pictures/Armada/Armada 01.jpg", "", ""],
+"implications": "Programmation d'une séquence de 15 minutes avec des moving lights - Intégration avec l'équipe technique locale - Communication entre Resolume et Onyx (Art-Net DMXin local network) - Utilisation de Capture 2025 pour pré-programmer en mode virtuel",
+"note": ""
+},
+{
+"titre": "Jeu du CN - Festival Montréal en Lumière",
+"description": "Jeu d’adresse consistant à faire glisser un anneau métallique le long d’une tige en acier formant le logo du CN, sans toucher la structure.",
+"tags": ["Arduino/ESP32", "Game", "Touchdesigner", "Festival", "Groupe CH/Evenko", "", "", "", ""],
+"images": ["youtube:QjcNjSSKPJM", "", "", "", "", "", "", "", ""],
+"implications": "Design et création d'une sensor box OSC - Programmation du jeu",
+"note": ""
+},
+{
+"titre": "Questionnaire Chevrolet avec Richardson Zéphir – Festival Juste pour rire",
+"description": "Deux questionnaires sur le Chevrolet TrailBlazer et Trax. Vidéos animées par Richardson Zéphyr.",
+"tags": ["UI/UX", "Collect de Data", "Touchdesigner", "Festival", "Activation de marque", "", "", "", ""],
+"images": ["youtube:zkhdiuuzVuE", "youtube:2cnIPFLxFRg", "", "", "", "", "", "", ""],
+"implications": "Programmation du jeu - Intégration de visuels dans le jeu",
+"note": ""
+},
+{
 "titre": "Anciens Combattants – Patrimoine Canada",
 "description": "Installation semi-permanente lumineuse à la place des combattants.",
 "tags": ["DMX", "Touchdesigner", "Gestion électrique", "", "", "", "", "", ""],
@@ -364,8 +339,16 @@
 "titre": "Interface DMX UI/UX – CITT",
 "description": "Pour une démo au salon CITT, un écran touch permet aux passants de contrôler des fixtures d'éclairage sur des winch DMX.",
 "tags": ["DMX", "UI/UX", "Touchdesigner", "Événement corporatif", "Consultant technique", "Salon / Convention", "", "", ""],
-"images": ["", "", "", "", "", "", "", "", ""],
+"images": ["youtube:7eHGT8G6lgU", "", "", "", "", "", "", "", ""],
 "implications": "Assemblage de graphismes fournis par un tiers - Motion design - Programmation du UI/UX - Programmation de déclenchement sécuritaire des cues",
+"note": ""
+},
+{
+"titre": "Lumifest 2024 – Musée Espace Culturel de Repentigny",
+"description": "Conception d'une ambiance éclectique alternative pour le musée de l'espace culturel de Repentigny pour le Lumifest 2024.",
+"tags": ["PixelMap", "DMX", "Tracking", "Immersif", "Touchdesigner", "Festival", "Audio", "", ""],
+"images": ["youtube:J8nEs_JNrqA", "", "", "", "", "", "", "", ""],
+"implications": "Installation - Intégration de deux Kinect pour le lustre interactif - Programmation de moving lights et de tubes LED - Intégration de trames musicales",
 "note": ""
 },
 {
@@ -417,11 +400,11 @@
 "note": ""
 },
 {
-"titre": "VSLR - Festival vue sur la relève",
-"description": "Conception du logo \"VLSR\" pour le tournage du festival en mode virtuel.",
-"tags": ["PixelMap", "DMX", "Resolume", "Éclairagiste", "VidéoClip", "", "", "", ""],
-"images": ["pictures/VSLR/VSLR 01.jpg", "pictures/VSLR/VSLR 04.jpg", "pictures/VSLR/VSLR 10.jpg", "pictures/VSLR/VSLR 11.jpg", "pictures/VSLR/VSLR 13.jpg", "", "", "", ""],
-"implications": "Programmation complète sans ordinateur (entièrement sur Arduino) - Communication série entre plusieurs microcontrôleurs (ancienne méthode) - Déclenchement d’une machine à fumée via protocole DMX - Intégration de strips LED digitales - Design narratif clair et immersif - Installation robuste et autonome pour une utilisation répétée en escape room",
+"titre": "Vert le But – Centre Bell (2 éditions)",
+"description": "Jeu éducatif sur le tri des matières résiduelles, utilisant des écrans et boutons d’arcade. Les réponses influençaient un système de pointage visible sur un troisième écran positionné plus haut, avec un affichage inspiré des panneaux de score de hockey.",
+"tags": ["Design Électroniques", "Motion Design", "Collect de Data", "Game", "Touchdesigner", "Activation de marque", "Groupe CH/Evenko", "", ""],
+"images": ["youtube:5DUBbQEB_So", "pictures/Vert le But/vert le but 01.jpg", "", "", "", "", "", "", ""],
+"implications": "Programmation de la logique de jeu - Intégration des assets graphiques fournis par une graphiste - Conception et fabrication d’une sensor box (OSC) - Installation sur site",
 "note": ""
 },
 {
@@ -441,8 +424,8 @@
 "note": ""
 },
 {
-"titre": "Super Bowl – Première Moisson",
-"description": "Projet familial entre frères pour le Super Bowl 2024 à la Place Bell pour une levée de fonds pour Première Moisson.",
+"titre": "Super Bowl – Moisson Laval",
+"description": "Projet familial entre frères pour le Super Bowl 2024 à la Place Bell pour une levée de fonds pour Moisson Laval.",
 "tags": ["PixelMap", "Touchdesigner", "VJ", "Éclairagiste", "Consultant technique", "Événement corporatif", "", "", ""],
 "images": ["", "", "", "", "", "", "", "", ""],
 "implications": "Installation d'un écran Fast Fold et d'un projecteur vidéo - Installation d'Astera et de Paladin Panel - Programmation - Opération - Démontage",
@@ -452,7 +435,7 @@
 "titre": "Volt-Age – Winterlude",
 "description": "Installation d'éclairage au Canadian Bank of Commerce pour rendre les fenêtres interactives à un piano installé à l'extérieur devant la bâtisse.",
 "tags": ["PixelMap", "Interactif", "Resolume", "Audio", "Festival", "", "", "", ""],
-"images": ["Portefolio/pictures/Volt-Age 01.jpg", "Portefolio/pictures/Volt-Age 02.jpg", "Portefolio/pictures/Volt-Age 03.jpg", "", "", "", "", "", ""],
+"images": ["pictures/Volt-Age/Volt-Age 01.jpg", "pictures/Volt-Age/Volt-Age 02.jpg", "pictures/Volt-Age/Volt-Age 03.jpg", "", "", "", "", "", ""],
 "implications": "Installation de l'éclairage sur chaque étage - Programmation",
 "note": ""
 },
@@ -521,6 +504,22 @@
 "note": ""
 },
 {
+"titre": "Borne Point Scène – IGA",
+"description": "Pour la promotion des points Scène, IGA cherche à créer une borne avec jeu interactif pour gagner des points scène servant à l'achat de produits d'épicerie.",
+"tags": ["UI/UX", "Game", "Collect de Data", "Touchdesigner", "Activation de marque", "", "", "", ""],
+"images": ["youtube:UolQlGr_05I", "", "", "", "", "", "", "", ""],
+"implications": "Aide à la conception du projet - Programmation d'un jeu avec système de probabilités de style \"urnes\" - Intégration et animation des graphismes fournis par un infographe - Collecte de données sur le nombre de joueurs participants et le nombre de points distribués",
+"note": "Graphisme: Sebastien Sigouin-Couturier"
+},
+{
+"titre": "Questionnaire de parcours Bénéva – Festival Juste pour rire",
+"description": "Questionnaire servant à diriger les gens vers la meilleure scène selon leurs goûts humoristiques.",
+"tags": ["UI/UX", "Collect de Data", "Touchdesigner", "Festival", "Activation de marque", "Consultant technique", "Groupe CH/Evenko", "", ""],
+"images": ["youtube:JweIq5UGCsI", "", "", "", "", "", "", "", ""],
+"implications": "Programmation d'un questionnaire - Système d'envoi par courriel automatique - Rendu 3D d'une map du Quartier des Spectacles avec mouvements de caméra - Ajout de motion design",
+"note": ""
+},
+{
 "titre": "Quiz du CN - Festival Montréal en Lumière",
 "description": "Questionnaire sur le Canadien National sur Écran tactile",
 "tags": ["UI/UX", "Collect de Data", "Touchdesigner", "Activation de marque", "Festival", "Groupe CH/Evenko", "", "", ""],
@@ -528,5 +527,4 @@
 "implications": "Programmation du questionnaire - Intégration de graphismes fournis par le client - Récolte de courriel pour concours",
 "note": ""
 }
-
 ]
