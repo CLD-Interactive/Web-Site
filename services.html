@@ -98,7 +98,7 @@
       display: none;
     }
     
-    /* Burger menu styles */
+    /* Burger menu styles from index page */
     #burger-menu {
       transform: translateX(-100%);
       transition: transform 0.3s ease;
@@ -148,464 +148,512 @@
     </nav>
   </header>
 
-  <!-- Menu Burger mobile -->
-  <nav id="burger-menu" class="fixed inset-0 bg-black bg-opacity-95 backdrop-blur-md text-white p-10 space-y-4 z-50 md:hidden flex flex-col justify-center transform -translate-x-full transition-transform">
+  <!-- Menu Burger mobile updated to match index page -->
+  <nav id="burger-menu" class="fixed inset-0 bg-black bg-opacity-95 backdrop-blur-md text-white p-10 space-y-4 z-50 md:hidden flex flex-col justify-center">
     <button id="close-burger" class="absolute top-4 right-4 text-white text-3xl">&times;</button>
     <a href="index.html" class="nav-button border-purple-500 hover:bg-purple-500/10 text-center">
+      <span class="button-frame"></span>
       Accueil
     </a>
     <a href="projets.html" class="nav-button border-purple-500 hover:bg-purple-500/10 text-center">
+      <span class="button-frame"></span>
       Projets
     </a>
     <a href="services.html" class="nav-button bg-purple-600 border-purple-600 hover:bg-purple-700 text-center">
+      <span class="button-frame"></span>
       Services
     </a>
-    <a href="index.html#contact" class="nav-button bg-amber-600 border-amber-600 hover:bg-amber-700">
+    <a href="index.html#contact" class="nav-button bg-amber-600 border-amber-600 hover:bg-amber-700 text-center">
       Contact
     </a>
   </nav>
 
   <!-- Contenu principal -->
   <main class="max-w-6xl mx-auto px-6 py-20">
-    <h1 class="text-5xl font-bold mb-12 text-center">Mes Services</h1>
+    <h1 class="text-5xl font-bold mb-12 text-center drop-shadow-[0_2px_4px_rgba(124,58,237,1)]">
+      Services Offerts
+    </h1>
+
+
+    <!-- Service Jeu -->
+    <div class="service-tile rounded-xl p-6">
+      <div class="mb-4">
+        <img src="pictures/Jeu icon.png" alt="Icône Jeu" class="w-36 h-36 mx-auto">
+      </div>
+      <h3 class="text-2xl font-bold mb-3 text-center">[ Jeu ]</h3>
+      
+      <!-- Description principale (gris clair) -->
+      <p class="text-gray-200 mb-4 leading-relaxed">
+        Création d'un jeu questionnaire, d'un jeu d'arcade, de jeu grandeur nature vivant ou Escape Room sur mesure.
+        Utilisant des boutons, écran tactile et/ou sensor/trackeur de tout genre.
+        Avec possibilité d'interaction sur system d'éclairage, son, video, etc.
+      </p>
+      
+      <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
+      <div class="mb-4">
+        <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
+        <ul class="list-none pl-0 space-y-5 text-gray-400">
+
+        <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Jeu solo. Une salle remplie de lasers rouges qui vous font perdre des points si touchés. Un seul devient bleu — touchez-le pour récolter un maximum de points en une minute. Tentez de battre le record ! </li>
+        <a href="https://youtu.be/kHi6Lm5CBEQ" target="_blank" class="text-purple-400 hover:text-purple-300">Voir exemple</a>
+
+
+        <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Jeu de 1 à 4 joueurs. Celui qui appuie le plus souvent sur le bouton de sa couleur en 1 minute gagne !</li>
+
+         <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Le joueur saute après un décompte, et son temps d'élévation détermine un score.</li>
+        <a href="https://youtu.be/To4gGFJHSAo" target="_blank" class="text-purple-400 hover:text-purple-300">Voir exemple</a>
+
+
+         <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Le jeu classic Pong ! Mais avec un estéthique 'NEON' avec power ups et contrôlé avec une planche d'équilibre.</li>
+        </ul>
 
 
 
-
-
-
- <!-- service TimeCode -->
-<div class="service-tile rounded-xl p-6">
-  <div class="mb-4">
-    <img src="pictures/TimeCode icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
-  </div>
-  <h3 class="text-2xl font-bold mb-3 text-center">[ TimeCode ]</h3>
-  
-  <!-- Description principale (gris clair) -->
-  <p class="text-gray-200 mb-4 leading-relaxed">
-    Synchronisation de séquences contrôlant diverses technologies : éclairage, vidéo, musique/son, effets de tremblement de terre, odeurs, vent, lasers, etc.
-  </p>
-  
-  <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
-  <div class="mb-4">
-    <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
-    <ul class="list-none pl-0 space-y-1 text-gray-400">
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-      Un film augmenté avec odeurs, effets de lumières et tremblements de terre.</li>
-
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-      Une forêt illuminée avec projection vidéo suivant une trame narrative et musicale.</li>
-     <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-      Un escape room avec événements programmés sur timer (changements d'ambiance, extraits audio de personnages).</li>
-    </ul>
-  </div>
-  
-  <!-- Note technique (gris foncé + italique) -->
-  <p class="text-gray-600 italic text-sm">
-    
-  </p>
-
-
-  <div class="text-center mt-4">
-    <a href="projets.html?tag=YOUR_TAG" class="inline-block nav-button border-purple-500 hover:bg-purple-500/10 px-4 py-2">
-      Voir les projets
-    </a>
-  </div>
-
-</div>
+      </div>
 
       
+      <!-- Note technique (gris foncé + italique) -->
+      <p class="text-gray-600 italic text-sm">
+        
+      </p>
+
+      <div class="text-center mt-4">
+        <a href="projets.html?tag=Game" class="inline-block nav-button border-purple-500 hover:bg-purple-500/10 px-4 py-2">
+          Voir les projets
+        </a>
+      </div>
+    </div>
 
 
 
-      <!-- Service Jeu -->
-<div class="service-tile rounded-xl p-6">
-  <div class="mb-4">
-    <img src="pictures/Jeu icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
-  </div>
-  <h3 class="text-2xl font-bold mb-3 text-center">[ Jeu ]</h3>
-  
-  <!-- Description principale (gris clair) -->
-  <p class="text-gray-200 mb-4 leading-relaxed">
-    Création d'un jeu questionnaire, d'arcade ou de jeu grandeur nature vivant sur mesure.
-    Avec possibilité d'interaction sur system d'éclairage, son, video, etc.
-  </p>
-  
-  <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
-  <div class="mb-4">
-    <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
-    <ul class="list-none pl-0 space-y-1 text-gray-400">
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    Jeu de 1 à 4 joueurs. Celui qui appuie le plus souvent sur son bouton en 1 minute gagne !</li>
+<!-- spacer -->
+  <div class="max-w-6xl mx-auto px-6 py-5"></div>
 
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    Jeu solo. Une salle remplie de lasers rouges qui vous font perdre des points si touchés.Un seul devient bleu — touchez-le pour récolter un maximum de points en une minute. Tentez de battre le record !</li>
-     <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    Le joueur saute après un décompte, et son temps d’élévation détermine un score.</li>
-    </ul>
-  </div>
-  
-  <!-- Note technique (gris foncé + italique) -->
-  <p class="text-gray-600 italic text-sm">
-    
-  </p>
 
-  <div class="text-center mt-4">
-    <a href="projets.html?tag=YOUR_TAG" class="inline-block nav-button border-purple-500 hover:bg-purple-500/10 px-4 py-2">
-      Voir les projets
-    </a>
-  </div>
 
-</div>
+
+    <!-- Service Controle -->
+    <div class="service-tile rounded-xl p-6">
+      <div class="mb-4">
+        <img src="pictures/Control icon.png" alt="Icône Contrôle" class="w-36 h-36 mx-auto">
+      </div>
+      <h3 class="text-2xl font-bold mb-3 text-center">[ Contrôle ]</h3>
       
-
-
-
-
-
-
-      <!-- Service Controle -->
-<div class="service-tile rounded-xl p-6">
-  <div class="mb-4">
-    <img src="pictures/Control icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
-  </div>
-  <h3 class="text-2xl font-bold mb-3 text-center">[ Contrôle ]</h3>
-  
-  <!-- Description principale (gris clair) -->
-  <p class="text-gray-200 mb-4 leading-relaxed">
-    ----
-  </p>
-  
-  <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
-  <div class="mb-4">
-    <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
-    <ul class="list-none pl-0 space-y-1 text-gray-400">
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-     <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-    </ul>
-  </div>
-  
-  <!-- Note technique (gris foncé + italique) -->
-  <p class="text-gray-600 italic text-sm">
-    
-  </p>
-
-  <div class="text-center mt-4">
-    <a href="projets.html?tag=YOUR_TAG" class="inline-block nav-button border-purple-500 hover:bg-purple-500/10 px-4 py-2">
-      Voir les projets
-    </a>
-  </div>
-
-</div>
-
-
-
-
-
-
-
-      <!-- Service Analog -->
-<div class="service-tile rounded-xl p-6">
-  <div class="mb-4">
-    <img src="pictures/Analog icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
-  </div>
-  <h3 class="text-2xl font-bold mb-3 text-center">[ Analog ]</h3>
-  
-  <!-- Description principale (gris clair) -->
-  <p class="text-gray-200 mb-4 leading-relaxed">
-    ----
-  </p>
-  
-  <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
-  <div class="mb-4">
-    <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
-    <ul class="list-none pl-0 space-y-1 text-gray-400">
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-     <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-    </ul>
-  </div>
-  
-  <!-- Note technique (gris foncé + italique) -->
-  <p class="text-gray-600 italic text-sm">
-    
-  </p>
-
-  <div class="text-center mt-4">
-    <a href="projets.html?tag=YOUR_TAG" class="inline-block nav-button border-purple-500 hover:bg-purple-500/10 px-4 py-2">
-      Voir les projets
-    </a>
-  </div>
-
-</div>
-
-
-
-
-
-
-
-      <!-- Service Motion -->
-<div class="service-tile rounded-xl p-6">
-  <div class="mb-4">
-    <img src="pictures/Motion icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
-  </div>
-  <h3 class="text-2xl font-bold mb-3 text-center">[ Motion ]</h3>
-  
-  <!-- Description principale (gris clair) -->
-  <p class="text-gray-200 mb-4 leading-relaxed">
-    ---- 
-  </p>
-  
-  <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
-  <div class="mb-4">
-    <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
-    <ul class="list-none pl-0 space-y-1 text-gray-400">
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-     <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-    </ul>
-  </div>
-  
-  <!-- Note technique (gris foncé + italique) -->
-  <p class="text-gray-600 italic text-sm">
-    
-  </p>
-
-  <div class="text-center mt-4">
-    <a href="projets.html?tag=YOUR_TAG" class="inline-block nav-button border-purple-500 hover:bg-purple-500/10 px-4 py-2">
-      Voir les projets
-    </a>
-  </div>
-
-</div>
-
-
-
-
-
-
-      <!-- Service Light -->
-<div class="service-tile rounded-xl p-6">
-  <div class="mb-4">
-    <img src="pictures/Light icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
-  </div>
-  <h3 class="text-2xl font-bold mb-3 text-center">[ Opérateur ]</h3>
-  
-  <!-- Description principale (gris clair) -->
-  <p class="text-gray-200 mb-4 leading-relaxed">
-    ---- 
-  </p>
-  
-  <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
-  <div class="mb-4">
-    <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
-    <ul class="list-none pl-0 space-y-1 text-gray-400">
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-     <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-    </ul>
-  </div>
-  
-  <!-- Note technique (gris foncé + italique) -->
-  <p class="text-gray-600 italic text-sm">
-    
-  </p>
-
-  <div class="text-center mt-4">
-    <a href="projets.html?tag=YOUR_TAG" class="inline-block nav-button border-purple-500 hover:bg-purple-500/10 px-4 py-2">
-      Voir les projets
-    </a>
-  </div>
-
-</div>
-
-
-
-
-
-
-
-      <!-- Service AI -->
-<div class="service-tile rounded-xl p-6">
-  <div class="mb-4">
-    <img src="pictures/AI icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
-  </div>
-  <h3 class="text-2xl font-bold mb-3 text-center">[ A.I ]</h3>
-  
-  <!-- Description principale (gris clair) -->
-  <p class="text-gray-200 mb-4 leading-relaxed">
-    ---- 
-  </p>
-  
-  <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
-  <div class="mb-4">
-    <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
-    <ul class="list-none pl-0 space-y-1 text-gray-400">
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-     <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-    </ul>
-  </div>
-  
-  <!-- Note technique (gris foncé + italique) -->
-  <p class="text-gray-600 italic text-sm">
-    
-  </p>
-
-  <div class="text-center mt-4">
-    <a href="projets.html?tag=YOUR_TAG" class="inline-block nav-button border-purple-500 hover:bg-purple-500/10 px-4 py-2">
-      Voir les projets
-    </a>
-  </div>
-
-</div>
-
-
-
-
-
-
-
-
-      <!-- Service consultation -->
-<div class="service-tile rounded-xl p-6">
-  <div class="mb-4">
-    <img src="pictures/Consultation icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
-  </div>
-  <h3 class="text-2xl font-bold mb-3 text-center">[ Consultation ]</h3>
-  
-  <!-- Description principale (gris clair) -->
-  <p class="text-gray-200 mb-4 leading-relaxed">
-    ---- 
-  </p>
-  
-  <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
-  <div class="mb-4">
-    <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
-    <ul class="list-none pl-0 space-y-1 text-gray-400">
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-     <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-    </ul>
-  </div>
-  
-  <!-- Note technique (gris foncé + italique) -->
-  <p class="text-gray-600 italic text-sm">
-    
-  </p>
-
-  <div class="text-center mt-4">
-    <a href="projets.html?tag=YOUR_TAG" class="inline-block nav-button border-purple-500 hover:bg-purple-500/10 px-4 py-2">
-      Voir les projets
-    </a>
-  </div>
-
-</div>
-
-
-
-
-
-
-
-      <!-- Service consultation -->
-<div class="service-tile rounded-xl p-6">
-  <div class="mb-4">
-    <img src="pictures/Recherche icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
-  </div>
-  <h3 class="text-2xl font-bold mb-3 text-center">[ R&D ]</h3>
-  
-  <!-- Description principale (gris clair) -->
-  <p class="text-gray-200 mb-4 leading-relaxed">
-    ---- 
-  </p>
-  
-  <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
-  <div class="mb-4">
-    <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
-    <ul class="list-none pl-0 space-y-1 text-gray-400">
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-
-    <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-     <li class="flex items-start">
-      <span class="text-purple-400 mr-2">•</span>
-    ----</li>
-    </ul>
-  </div>
-  
-  <!-- Note technique (gris foncé + italique) -->
-  <p class="text-gray-600 italic text-sm">
-    
-  </p>
-
-  <div class="text-center mt-4">
-    <a href="projets.html?tag=YOUR_TAG" class="inline-block nav-button border-purple-500 hover:bg-purple-500/10 px-4 py-2">
-      Voir les projets
-    </a>
-  </div>
-  
-</div>
-
-
-
-
-
-
-
+      <!-- Description principale (gris clair) -->
+      <p class="text-gray-200 mb-4 leading-relaxed">
+        Parfois certains systèmes d'éclairage, de son et de vidéo sont trop techniques pour l'utilisateur régulier. Création sur mesure d'interfaces de contrôle simplifiées, conçues pour être facilement utilisables, immédiatement et sans compétences particulières.
+      </p>
+      
+      <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
+      <div class="mb-4">
+        <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
+        <ul class="list-none pl-0 space-y-5 text-gray-400">
+
+        <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Un écran tactile personalisé avec logo et couleur du client pour controler l'éclairage de salle incluant couleurs et pattern</li>
+        <a href="https://youtu.be/7eHGT8G6lgU" target="_blank" class="text-purple-400 hover:text-purple-300">Voir exemple</a>
+
+
+        <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Un écran tactil qui permet simplement de gérer le son de musiciens pour les 5 à 7. Permettant ainsi d'avoir un system plus sécurisé et moins bordélique</li>
+
+         <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Appli sur tablette permettant de régler son, éclairgae, video, etc...</li>
+
+
+        </ul>
+      </div>
+      
+      <!-- Note technique (gris foncé + italique) -->
+      <p class="text-gray-600 italic text-sm">
+        
+      </p>
+
+      <!--<div class="text-center mt-4">
+        <a href="projets.html?tag=YOUR_TAG" class="inline-block nav-button border-purple-500 hover:bg-purple-500/10 px-4 py-2">
+          Voir les projets
+        </a>
+      -->
+      </div>
+    </div>
+
+
+
+
+<!-- spacer -->
+  <div class="max-w-6xl mx-auto px-6 py-5"></div>
+
+
+
+    <!-- Service Solution Box -->
+    <div class="service-tile rounded-xl p-6">
+      <div class="mb-4">
+        <img src="pictures/Analog icon.png" alt="Icône Analog" class="w-36 h-36 mx-auto">
+      </div>
+      <h3 class="text-2xl font-bold mb-3 text-center">[ Solution Box ! ]</h3>
+      
+      <!-- Description principale (gris clair) -->
+      <p class="text-gray-200 mb-4 leading-relaxed">
+        Conception de solution techniques autonomes – plug and play, sans pc.
+      </p>
+      
+      <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
+      <div class="mb-4">
+        <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
+        <ul class="list-none pl-0 space-y-5 text-gray-400">
+        <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Conceptions de props pour escape rooms comme une bombe sans fils avec un system de désamorçage spécifique.</li>
+        <a href="https://youtu.be/wrQrK_ow9V4" target="_blank" class="text-purple-400 hover:text-purple-300">Voir exemple</a>
+
+         <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Intégration DMX pour servo-aimant, servo-moteur, loquet digital, actuateur ou tout autres mécaniques qui ne se contrôle normalement pas par DMX.
+        </li>
+        </ul>
+      </div>
+      
+      <!-- Note technique (gris foncé + italique) -->
+      <p class="text-gray-600 italic text-sm">
+        
+      </p>
+
+      <div class="text-center mt-4">
+        <a href="projets.html?tag=Design Électroniques" class="inline-block nav-button border-purple-500 hover:bg-purple-500/10 px-4 py-2">
+          Voir les projets
+        </a>
+      </div>
+    </div>
+
+
+
+<!-- spacer -->
+  <div class="max-w-6xl mx-auto px-6 py-5"></div>
+
+
+
+    <!-- Service Motion -->
+    <div class="service-tile rounded-xl p-6">
+      <div class="mb-4">
+        <img src="pictures/Motion icon.png" alt="Icône Motion" class="w-36 h-36 mx-auto">
+      </div>
+      <h3 class="text-2xl font-bold mb-3 text-center">[ Motion ]</h3>
+      
+      <!-- Description principale (gris clair) -->
+      <p class="text-gray-200 mb-4 leading-relaxed">
+        Animation d'effet visuel pour contenu vidéo ou en intégration expérientielle.
+      </p>
+      
+      <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
+      <div class="mb-4">
+        <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
+        <ul class="list-none pl-0 space-y-5 text-gray-400">
+        <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Système de layout animé pour diffusion en direct d'un équipe de eSport, sport, de nouvelles indépendante, etc. </li>
+
+        <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Jeu de texte intégré dans une vidéo promotionelle.</li>
+         <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Layout avec contrôle facilité pour émission web ou podcast.</li>
+        </ul>
+      </div>
+      
+      <!-- Note technique (gris foncé + italique) -->
+      <p class="text-gray-600 italic text-sm">
+        
+      </p>
+
+      <div class="text-center mt-4">
+        <a href="projets.html?tag=Motion Design" class="inline-block nav-button border-purple-500 hover:bg-purple-500/10 px-4 py-2">
+          Voir les projets
+        </a>
+      </div>
+    </div>
+
+
+
+<!-- spacer -->
+  <div class="max-w-6xl mx-auto px-6 py-5"></div>
+
+
+    <!-- service TimeCode -->
+    <div class="service-tile rounded-xl p-6">
+      <div class="mb-4">
+        <img src="pictures/TimeCode icon.png" alt="Icône TimeCode" class="w-36 h-36 mx-auto">
+      </div>
+      <h3 class="text-2xl font-bold mb-3 text-center">[ TimeCode ]</h3>
+      
+      <!-- Description principale (gris clair) -->
+      <p class="text-gray-200 mb-4 leading-relaxed">
+      Séquence théatral mettant en vedette la synchronisation de l'éclairage, la vidéo, musique/son, effets de tremblement de terre, odeurs, vent, lasers, etc...
+      </p>
+      
+      <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
+      <div class="mb-4">
+        <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
+        <ul class="list-none pl-0 space-y-5 text-gray-400">
+        <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+          Un film augmenté avec odeurs, effets de lumières et tremblements de terre.</li>
+          <a href="https://youtu.be/8mbosEcnQBE" target="_blank" class="text-purple-400 hover:text-purple-300">Voir exemple</a>
+
+        <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+          Une forêt illuminée avec projection vidéo suivant une trame narrative et musicale.</li>
+          <a href="https://youtu.be/Ax-VjtfyYXk" target="_blank" class="text-purple-400 hover:text-purple-300">Voir exemple</a>
+          
+         <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+          Un escape room avec événements programmés sur timer (changements d'ambiance, extraits audio de personnages).</li>
+        </ul>
+      </div>
+      
+      <!-- Note technique (gris foncé + italique) -->
+      <p class="text-gray-600 italic text-sm">
+        
+      </p>
+
+
+      <div class="text-center mt-4">
+        <a href="projets.html?tag=Séquence/Timecode" class="inline-block nav-button border-purple-500 hover:bg-purple-500/10 px-4 py-2">
+          Voir les projets
+        </a>
+      </div>
+    </div>
+
+
+
+
+<!-- spacer -->
+  <div class="max-w-6xl mx-auto px-6 py-5"></div>
+
+
+
+
+    <!-- Service Light -->
+    <div class="service-tile rounded-xl p-6">
+      <div class="mb-4">
+        <img src="pictures/Light icon.png" alt="Icône Opérateur" class="w-36 h-36 mx-auto">
+      </div>
+      <h3 class="text-2xl font-bold mb-3 text-center">[ Opérateur ]</h3>
+      
+      <!-- Description principale (gris clair) -->
+      <p class="text-gray-200 mb-4 leading-relaxed">
+        Opérteur vidéo/VJ et d'éclairages utilisant ONYX, GrandMa2 et Resolume.
+      </p>
+      
+      <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
+      <div class="mb-4">
+        <p class="text-gray-500 font-medium mb-2">Type d'évènements :</p>
+        <ul class="list-none pl-0 space-y-5 text-gray-400">
+        <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Festivals</li>
+
+        <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Corporatif</li>
+
+         <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Évènement sportif</li>
+
+
+        </ul>
+      </div>
+      
+      <!-- Note technique (gris foncé + italique) -->
+      <p class="text-gray-600 italic text-sm">
+        
+      </p>
+
+      <div class="text-center mt-4">
+        <a href="projets.html?tag=Éclairagiste" class="inline-block nav-button border-purple-500 hover:bg-purple-500/10 px-4 py-2">
+          Voir les projets
+        </a>
+      </div>
+    </div>
+
+
+
+<!-- spacer -->
+  <div class="max-w-6xl mx-auto px-6 py-5"></div>
+
+
+
+    <!-- Service AI -->
+    <div class="service-tile rounded-xl p-6">
+      <div class="mb-4">
+        <img src="pictures/AI icon.png" alt="Icône A.I" class="w-36 h-36 mx-auto">
+      </div>
+      <h3 class="text-2xl font-bold mb-3 text-center">[ A.I ]</h3>
+      
+      <!-- Description principale (gris clair) -->
+      <p class="text-gray-200 mb-4 leading-relaxed">
+        Intégration de l'IA dans plusieurs des services offert.
+      </p>
+      
+      <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
+      <div class="mb-4">
+        <p class="text-gray-500 font-medium mb-2">Exemples :</p>
+        <ul class="list-none pl-0 space-y-5 text-gray-400">
+        <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Détecteur de personne présente dans une salle.</li>
+
+        <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Isolation de voix humaines en temps réel pour activation vocal. Identification de son en temps réel.</li>
+
+         <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        PhotoBooth expérimental qui intègre les sujets dans un univers virtuelle.</li>
+
+          <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Mirroir AI qui redessine les sujets en temps réell.</li>
+
+          <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Détection d'objet spécfiques sur caméras.</li>
+
+
+        </ul>
+      </div>
+      
+      <!-- Note technique (gris foncé + italique) -->
+      <p class="text-gray-600 italic text-sm">
+        
+      </p>
+
+      <div class="text-center mt-4">
+        <a href="projets.html?tag=Éclairagiste" class="inline-block nav-button border-purple-500 hover:bg-purple-500/10 px-4 py-2">
+          Voir les projets
+        </a>
+      </div>
+
+
+
+        </ul>
+      </div>
+      
+      <!-- Note technique (gris foncé + italique) -->
+      <p class="text-gray-600 italic text-sm">
+        
+      </p>
+    </div>
+
+
+
+
+<!-- spacer -->
+  <div class="max-w-6xl mx-auto px-6 py-5"></div>
+
+
+
+
+    <!-- Service consultation -->
+    <div class="service-tile rounded-xl p-6">
+      <div class="mb-4">
+        <img src="pictures/Consultation icon.png" alt="Icône Consultation" class="w-36 h-36 mx-auto">
+      </div>
+      <h3 class="text-2xl font-bold mb-3 text-center">[ Consultation ]</h3>
+      
+      <!-- Description principale (gris clair) -->
+      <p class="text-gray-200 mb-4 leading-relaxed">
+        Consultation technique et technologique pour évaluation d'un projet. 
+      </p>
+      
+      <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
+      <div class="mb-4">
+        <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
+        <ul class="list-none pl-0 space-y-5 text-gray-400">
+        <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Évaluation d'une pratique spécifique.</li>
+
+        <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Évaluation de la faisabilité d'un projet.</li>
+         <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Avis sur certain matériel.</li>
+        </ul>
+      </div>
+      
+      <!-- Note technique (gris foncé + italique) -->
+      <p class="text-gray-600 italic text-sm">
+        
+      </p>
+
+
+    </div>
+
+
+
+
+<!-- spacer -->
+  <div class="max-w-6xl mx-auto px-6 py-5"></div>
+
+
+
+    <!-- Service R&D -->
+    <div class="service-tile rounded-xl p-6">
+      <div class="mb-4">
+        <img src="pictures/Recherche icon.png" alt="Icône R&D" class="w-36 h-36 mx-auto">
+      </div>
+      <h3 class="text-2xl font-bold mb-3 text-center">[ R&D ]</h3>
+      
+      <!-- Description principale (gris clair) -->
+      <p class="text-gray-200 mb-4 leading-relaxed">
+        Vous avez une idée qui ne se trouve nulle part ? Mes méthodes de recherches, de programmagion et d'utilisation de l'IA peuvent sans doute vous trouver une solution.
+      </p>
+      
+      <!-- Exemples en liste à puces (gris moyen + puces violettes) -->
+      <div class="mb-4">
+        <p class="text-gray-500 font-medium mb-2">Exemples d'applications :</p>
+        <ul class="list-none pl-0 space-y-5 text-gray-400">
+        <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Conception méchanique, programmation, schéma électronique et recherche de composante pour la création de la machine ou jeu, dont vous avez eux l'idée.</li>
+
+        <li class="flex items-start">
+          <span class="text-purple-400 mr-2">•</span>
+        Intégration d'une nouvelle technologie en context de jeu interactif.</li>
+         <li class="flex items-start">
+
+
+          <span class="text-purple-400 mr-2">•</span>
+        ----</li>
+
+
+        </ul>
+      </div>
+      
+      <!-- Note technique (gris foncé + italique) -->
+      <p class="text-gray-600 italic text-sm">
+        
+      </p>
+
+      <div class="text-center mt-4">
+        <a href="projets.html?tag=YOUR_TAG" class="inline-block nav-button border-purple-500 hover:bg-purple-500/10 px-4 py-2">
+          Voir les projets
+        </a>
+      </div>
     </div>
   </main>
 
@@ -698,11 +746,21 @@
       const closeBurger = document.getElementById('close-burger');
       
       burgerBtn.addEventListener('click', function() {
-        burgerMenu.classList.remove('-translate-x-full');
+        burgerMenu.classList.add('open');
+        document.body.style.overflow = 'hidden';
       });
       
       closeBurger.addEventListener('click', function() {
-        burgerMenu.classList.add('-translate-x-full');
+        burgerMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+      
+      // Fermer le menu quand on clique sur un lien
+      burgerMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+          burgerMenu.classList.remove('open');
+          document.body.style.overflow = '';
+        });
       });
     }
   </script>
