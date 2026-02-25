@@ -267,6 +267,7 @@
 
 
 
+
     </style>
 
 
@@ -507,6 +508,19 @@
       <span id="lightbox-close" class="lightbox-close">&times;</span>
       <img id="lightbox-img" src="" alt="Zoom image" loading="lazy" />
     </div>
+
+    <!-- Ko-fi Widget -->
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+      setTimeout(function() {
+        kofiWidgetOverlay.draw('cldinteractive', {
+          'type': 'floating-chat',
+          'floating-chat.donateButton.text': 'Buy Me a Tea!',
+          'floating-chat.donateButton.background-color': '#794bc4',
+          'floating-chat.donateButton.text-color': '#fff'
+      });
+      }, 5000);
+    </script>
 
     <script>
       // Variables globales pour gestion mémoire
