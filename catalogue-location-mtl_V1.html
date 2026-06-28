@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📦 Catalogue Location MTL</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f1f5f9;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ─────────────────────────────────────────────── */
+  #header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    padding: 18px 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,.35);
+  }
+
+  #header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  #title { color: #fff; font-size: 18px; font-weight: 700; letter-spacing: -.3px; }
+  #subtitle { color: #94a3b8; font-size: 11px; margin-top: 2px; }
+
+  /* Source tabs */
+  #src-tabs {
+    display: flex;
+    gap: 4px;
+    background: rgba(255,255,255,.08);
+    border-radius: 10px;
+    padding: 3px;
+  }
+
+  .src-btn {
+    border: none;
+    cursor: pointer;
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all .15s;
+    background: transparent;
+    color: #94a3b8;
+  }
+  .src-btn.active { background: #3b82f6; color: #fff; }
+
+  /* Search + filters */
+  #controls {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  #search {
+    flex: 1;
+    min-width: 180px;
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 10px;
+    padding: 9px 14px;
+    color: #fff;
+    font-size: 13px;
+    outline: none;
+    transition: border .15s;
+  }
+  #search::placeholder { color: #64748b; }
+  #search:focus { border-color: #3b82f6; }
+
+  #cat-select, #shop-select {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 10px;
+    padding: 9px 12px;
+    color: #cbd5e1;
+    font-size: 12px;
+    outline: none;
+    cursor: pointer;
+    max-width: 160px;
+  }
+  #cat-select option, #shop-select option { background: #1e293b; color: #fff; }
+
+  /* Period tabs */
+  #period-tabs {
+    display: flex;
+    gap: 3px;
+    background: rgba(255,255,255,.08);
+    border-radius: 9px;
+    padding: 3px;
+    margin-left: auto;
+  }
+
+  .per-btn {
+    border: none;
+    cursor: pointer;
+    padding: 5px 13px;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 600;
+    transition: all .15s;
+    background: transparent;
+    color: #94a3b8;
+    white-space: nowrap;
+  }
+  .per-btn.active { background: rgba(59,130,246,.8); color: #fff; }
+
+  #result-count {
+    margin-left: 6px;
+    font-size: 11px;
+    color: #94a3b8;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* ── CONTENT ─────────────────────────────────────────────── */
+  #content { padding: 16px; }
+
+  /* States */
+  .state-box {
+    text-align: center;
+    padding: 4rem 1rem;
+    color: #64748b;
+  }
+  .state-box .icon { font-size: 40px; margin-bottom: 12px; }
+  .state-box .msg { font-size: 15px; font-weight: 600; color: #475569; }
+  .state-box .sub { font-size: 13px; margin-top: 5px; }
+
+  .error-box {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .error-box .icon { font-size: 24px; margin-bottom: 8px; }
+  .error-box .title { font-weight: 600; color: #991b1b; }
+  .error-box .detail { font-size: 12px; color: #b91c1c; margin-top: 4px; }
+  .error-box .hint { font-size: 11px; color: #6b7280; margin-top: 8px; }
+
+  /* Grid */
+  #grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+    gap: 10px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 13px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow .15s, transform .1s;
+  }
+  .card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,.12);
+    transform: translateY(-1px);
+  }
+
+  .badges { display: flex; gap: 4px; margin-bottom: 6px; flex-wrap: wrap; }
+
+  .badge {
+    font-size: 9px;
+    padding: 2px 7px;
+    border-radius: 100px;
+    font-weight: 700;
+    letter-spacing: .5px;
+  }
+  .badge-av { background: #dbeafe; color: #1e40af; }
+  .badge-outil { background: #fef9c3; color: #713f12; }
+
+  .badge-shop {
+    font-size: 9px;
+    padding: 2px 7px;
+    border-radius: 100px;
+    font-weight: 700;
+    letter-spacing: .4px;
+    color: #fff;
+  }
+
+  .card-cat {
+    font-size: 10px;
+    color: #94a3b8;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    margin-bottom: 4px;
+  }
+
+  .card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e293b;
+    line-height: 1.35;
+    flex: 1;
+    margin-bottom: 10px;
+  }
+
+  .card-price {
+    font-size: 18px;
+    font-weight: 800;
+    color: #0f172a;
+  }
+  .card-price-na { font-size: 14px; font-weight: 500; color: #94a3b8; }
+  .card-period { font-size: 10px; color: #64748b; margin-top: 1px; }
+
+  /* Spinner */
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spinner { animation: spin 1s linear infinite; display: inline-block; font-size: 32px; }
+
+  /* Refresh btn */
+  #refresh-btn {
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 8px;
+    padding: 6px 12px;
+    color: #cbd5e1;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  #refresh-btn:hover { background: rgba(255,255,255,.2); }
+
+  @media (max-width: 500px) {
+    #grid { grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); }
+    #period-tabs { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <div id="header-top">
+    <div>
+      <div id="title">📦 Catalogue Location MTL</div>
+      <div id="subtitle">Chargement…</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button id="refresh-btn" onclick="loadAV()">↻ Refresh</button>
+      <div id="src-tabs">
+        <button class="src-btn active" data-src="Tous" onclick="setSrc(this)">Tous</button>
+        <button class="src-btn" data-src="AV" onclick="setSrc(this)">🎤 AV</button>
+        <button class="src-btn" data-src="Outils" onclick="setSrc(this)">🔧 Outils</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="controls">
+    <input id="search" type="search" placeholder="🔍  Chercher… ex: genie 19, SM58, projecteur" oninput="render()">
+    <select id="shop-select" onchange="render()"><option value="">Tous les shops</option></select>
+    <select id="cat-select" onchange="render()"><option value="">Toutes catégories</option></select>
+    <div id="period-tabs">
+      <button class="per-btn active" data-per="j" onclick="setPer(this)">1 jour</button>
+      <button class="per-btn" data-per="j3" onclick="setPer(this)">3 jours</button>
+      <button class="per-btn" data-per="s" onclick="setPer(this)">1 sem.</button>
+      <button class="per-btn" data-per="m" onclick="setPer(this)">1 mois</button>
+    </div>
+    <span id="result-count"></span>
+  </div>
+</div>
+
+<div id="content">
+  <div class="state-box" id="loading-state">
+    <div class="icon spinner">⏳</div>
+    <div class="msg">Chargement du catalogue AV…</div>
+    <div class="sub">Connexion à Google Sheets</div>
+  </div>
+  <div id="error-box" class="error-box" style="display:none;">
+    <div class="icon">⚠️</div>
+    <div class="title">Erreur de chargement des données AV</div>
+    <div class="detail" id="error-detail"></div>
+    <div class="hint">Les données Outils restent disponibles — clique sur 🔧 Outils</div>
+  </div>
+  <div id="grid"></div>
+  <div class="state-box" id="empty-state" style="display:none;">
+    <div class="icon">🔍</div>
+    <div class="msg">Aucun résultat</div>
+    <div class="sub">Essayez un autre mot-clé ou retirez les filtres</div>
+  </div>
+</div>
+
+<script>
+// ── CONFIG ────────────────────────────────────────────────────
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS9mNM0zHJuHojVr7o-cBzHdbuG09CNysFni3LZEOVmtTNwh8yj17tM0VdnYMxG5X02EWsxEIxzXkym/pub?output=csv";
+
+// Shop colors [bg, text]
+const SHOP_COLORS = {
+  "SE Concept":          ["#1e40af","#fff"],
+  "RedOne":              ["#be123c","#fff"],
+  "Loucam":              ["#b45309","#fff"],
+  "SLA Location":        ["#0f766e","#fff"],
+  "EVS":                 ["#7c3aed","#fff"],
+  "Scénaspec":           ["#0369a1","#fff"],
+  "Ivan & Co":           ["#c2410c","#fff"],
+  "CR34TE":              ["#065f46","#fff"],
+  "Mathieu Tremblay":    ["#4338ca","#fff"],
+  "Ville de MTL":        ["#374151","#fff"],
+  "Moog Audio Rental":   ["#9a3412","#fff"],
+  "Long & McQuade":      ["#1d4ed8","#fff"],
+  "Lou-Tec":             ["#713f12","#fef9c3"],
+  "Simplex":             ["#064e3b","#d1fae5"],
+  "Location Turbo":      ["#4c1d95","#ede9fe"],
+};
+
+const PERIOD_LABELS = { j:"/ jour", j3:"/ 3 jours", s:"/ semaine", m:"/ mois" };
+
+// ── DONNÉES OUTILS (hardcodées — pas dans le Sheet) ───────────
+const TOOLS_ITEMS = [
+  // Lou-Tec
+  {id:"t001",source:"Outils",shop:"Lou-Tec",cat:"Élévation",title:"Genie GS-1932 – Ciseaux élec. 19pi",j:175,j3:350,s:525,m:null},
+  {id:"t002",source:"Outils",shop:"Lou-Tec",cat:"Élévation",title:"Genie AWP-20S – Plateforme verticale 20pi",j:90,j3:180,s:270,m:null},
+  {id:"t003",source:"Outils",shop:"Lou-Tec",cat:"Élévation",title:"Genie TZ-34/20 – Boom articulé 34pi",j:295,j3:590,s:885,m:null},
+  {id:"t004",source:"Outils",shop:"Lou-Tec",cat:"Électricité",title:"Génératrice 20 kW silencieuse",j:225,j3:450,s:675,m:null},
+  {id:"t005",source:"Outils",shop:"Lou-Tec",cat:"Électricité",title:"Génératrice 45 kW",j:375,j3:750,s:1125,m:null},
+  {id:"t006",source:"Outils",shop:"Lou-Tec",cat:"Électricité",title:"Câble 100A 50pi",j:18,j3:36,s:54,m:null},
+  {id:"t007",source:"Outils",shop:"Lou-Tec",cat:"Manutention",title:"Transpalette électrique",j:80,j3:160,s:240,m:null},
+  {id:"t008",source:"Outils",shop:"Lou-Tec",cat:"Manutention",title:"Diable aluminium 2 roues",j:15,j3:30,s:45,m:null},
+  // Simplex
+  {id:"t020",source:"Outils",shop:"Simplex",cat:"Élévation",title:"Plateforme ciseaux 26pi diesel",j:265,j3:530,s:795,m:null},
+  {id:"t021",source:"Outils",shop:"Simplex",cat:"Élévation",title:"Boom articulé 40pi diesel",j:395,j3:790,s:1185,m:null},
+  {id:"t022",source:"Outils",shop:"Simplex",cat:"Élévation",title:"Télescopique 45pi diesel",j:425,j3:850,s:1275,m:null},
+  {id:"t023",source:"Outils",shop:"Simplex",cat:"Électricité",title:"Génératrice 30 kW",j:275,j3:550,s:825,m:null},
+  {id:"t024",source:"Outils",shop:"Simplex",cat:"Clôture",title:"Clôture Heras temporaire 8pi (section)",j:4,j3:8,s:12,m:null},
+  // Location Turbo
+  {id:"t040",source:"Outils",shop:"Location Turbo",cat:"Outils électriques",title:"Perceuse à percussion 18V",j:22,j3:44,s:66,m:null},
+  {id:"t041",source:"Outils",shop:"Location Turbo",cat:"Outils électriques",title:"Scie circulaire 7-1/4\"",j:20,j3:40,s:60,m:null},
+  {id:"t042",source:"Outils",shop:"Location Turbo",cat:"Outils électriques",title:"Meuleuse d'angle 4-1/2\"",j:18,j3:36,s:54,m:null},
+  {id:"t043",source:"Outils",shop:"Location Turbo",cat:"Manutention",title:"Chariot plat 4x8",j:35,j3:70,s:105,m:null},
+  {id:"t044",source:"Outils",shop:"Location Turbo",cat:"Manutention",title:"Camion cube 16pi (avec chauffeur)",j:195,j3:null,s:null,m:null},
+];
+
+// ── STATE ─────────────────────────────────────────────────────
+let avItems = [];
+let src = "Tous";
+let per = "j";
+
+// ── CSV PARSER ────────────────────────────────────────────────
+function parseCSV(text) {
+  const rows = [];
+  let cur = "", inQ = false, row = [];
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (c === '"') { inQ = !inQ; continue; }
+    if (c === ',' && !inQ) { row.push(cur.trim()); cur = ""; continue; }
+    if ((c === '\n' || c === '\r') && !inQ) {
+      if (cur || row.length) { row.push(cur.trim()); rows.push(row); }
+      cur = ""; row = [];
+      if (c === '\r' && text[i+1] === '\n') i++;
+      continue;
+    }
+    cur += c;
+  }
+  if (cur || row.length) { row.push(cur.trim()); rows.push(row); }
+  return rows;
+}
+
+function parsePrice(v) {
+  if (!v || v.trim() === "" || v.trim() === "-" || v.trim() === "—") return null;
+  const n = parseFloat(v.replace(/[^0-9.]/g, ""));
+  return isNaN(n) ? null : n;
+}
+
+// ── FETCH AV ──────────────────────────────────────────────────
+async function loadAV() {
+  document.getElementById("loading-state").style.display = "";
+  document.getElementById("error-box").style.display = "none";
+  document.getElementById("grid").innerHTML = "";
+  document.getElementById("empty-state").style.display = "none";
+  updateSubtitle("Chargement…");
+
+  try {
+    const resp = await fetch(CSV_URL);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const text = await resp.text();
+    const rows = parseCSV(text);
+    // Skip header row if first col is "source" or "Source"
+    const start = rows[0] && rows[0][0].toLowerCase() === "source" ? 1 : 0;
+    avItems = rows.slice(start)
+      .map((r, i) => {
+        const v = n => (r[n] || "").trim();
+        if (!v(0) || !v(2)) return null;
+        return {
+          id: "av" + i,
+          source: "AV",
+          shop: v(0) !== "AV" ? v(0) : v(1),   // flexible: col0=source ou col0=shop
+          cat: v(1) || "Divers",
+          title: v(2) || "",
+          j:  parsePrice(v(4)),
+          j3: parsePrice(v(5)),
+          s:  parsePrice(v(6)),
+          m:  parsePrice(v(7)),
+        };
+      })
+      .filter(x => x && x.shop && x.title);
+
+    document.getElementById("loading-state").style.display = "none";
+    rebuildSelects();
+    render();
+  } catch (e) {
+    avItems = [];
+    document.getElementById("loading-state").style.display = "none";
+    document.getElementById("error-box").style.display = "";
+    document.getElementById("error-detail").textContent = e.message;
+    rebuildSelects();
+    render();
+  }
+}
+
+// ── SELECTS ───────────────────────────────────────────────────
+function rebuildSelects() {
+  const all = getAll();
+  const pool = src === "Tous" ? all : all.filter(x => x.source === src);
+
+  const shops = ["", ...new Set(pool.map(x => x.shop).filter(Boolean))].sort();
+  const shopSel = document.getElementById("shop-select");
+  const curShop = shopSel.value;
+  shopSel.innerHTML = `<option value="">Tous les shops</option>` +
+    shops.filter(s => s).map(s => `<option value="${s}"${s===curShop?" selected":""}>${s}</option>`).join("");
+
+  const cats = ["", ...new Set(pool.map(x => x.cat).filter(Boolean))].sort();
+  const catSel = document.getElementById("cat-select");
+  const curCat = catSel.value;
+  catSel.innerHTML = `<option value="">Toutes catégories</option>` +
+    cats.filter(c => c).map(c => `<option value="${c}"${c===curCat?" selected":""}>${c}</option>`).join("");
+}
+
+// ── RENDER ────────────────────────────────────────────────────
+function getAll() {
+  return [...avItems, ...TOOLS_ITEMS];
+}
+
+function render() {
+  const q = document.getElementById("search").value.toLowerCase().trim();
+  const shopFilter = document.getElementById("shop-select").value;
+  const catFilter = document.getElementById("cat-select").value;
+  const all = getAll();
+
+  const results = all.filter(x => {
+    if (src !== "Tous" && x.source !== src) return false;
+    if (shopFilter && x.shop !== shopFilter) return false;
+    if (catFilter && x.cat !== catFilter) return false;
+    if (q) {
+      const hay = `${x.shop} ${x.cat} ${x.title}`.toLowerCase();
+      return q.split(/\s+/).every(w => hay.includes(w));
+    }
+    return true;
+  });
+
+  const grid = document.getElementById("grid");
+  const emptyState = document.getElementById("empty-state");
+
+  if (results.length === 0) {
+    grid.innerHTML = "";
+    emptyState.style.display = "";
+  } else {
+    emptyState.style.display = "none";
+    const shown = results.slice(0, 250);
+    grid.innerHTML = shown.map(item => cardHTML(item)).join("");
+  }
+
+  const total = getAll().filter(x => src === "Tous" || x.source === src).length;
+  document.getElementById("result-count").textContent =
+    `${results.length} résultat${results.length !== 1 ? "s" : ""}` +
+    (results.length > 250 ? " · 250 max affichés" : "");
+
+  updateSubtitle(`${total} articles · AV + Outils`);
+}
+
+function cardHTML(item) {
+  const colors = SHOP_COLORS[item.shop] || ["#374151", "#fff"];
+  const price = per === "j" ? item.j : per === "j3" ? item.j3 : per === "s" ? item.s : item.m;
+  const priceHTML = price == null
+    ? `<span class="card-price-na">N/D</span>`
+    : `<span class="card-price">$${Number.isInteger(price) ? price : price.toFixed(2)}</span>`;
+  const badgeClass = item.source === "AV" ? "badge-av" : "badge-outil";
+  const badgeLabel = item.source === "AV" ? "AV" : "OUTILS";
+
+  return `<div class="card">
+    <div class="badges">
+      <span class="badge ${badgeClass}">${badgeLabel}</span>
+      <span class="badge-shop" style="background:${colors[0]};color:${colors[1]}">${item.shop}</span>
+    </div>
+    <div class="card-cat">${item.cat}</div>
+    <div class="card-title">${item.title}</div>
+    ${priceHTML}
+    <div class="card-period">${PERIOD_LABELS[per]}</div>
+  </div>`;
+}
+
+function updateSubtitle(txt) {
+  document.getElementById("subtitle").textContent = txt;
+}
+
+// ── CONTROLS ──────────────────────────────────────────────────
+function setSrc(btn) {
+  src = btn.dataset.src;
+  document.querySelectorAll(".src-btn").forEach(b => b.classList.toggle("active", b === btn));
+  document.getElementById("cat-select").value = "";
+  document.getElementById("shop-select").value = "";
+  rebuildSelects();
+  render();
+}
+
+function setPer(btn) {
+  per = btn.dataset.per;
+  document.querySelectorAll(".per-btn").forEach(b => b.classList.toggle("active", b === btn));
+  render();
+}
+
+// ── INIT ──────────────────────────────────────────────────────
+loadAV();
+</script>
+</body>
+</html>
